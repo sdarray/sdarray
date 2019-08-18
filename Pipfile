@@ -8,6 +8,9 @@ pytest = "*"
 ipython = "*"
 jupyterlab = "*"
 twine = "*"
+flake8 = "*"
+black = "*"
+pre-commit = "*"
 
 [packages]
 numpy = "*"
@@ -20,3 +23,6 @@ dask = {extras = ["complete"],version = "*"}
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
