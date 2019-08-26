@@ -1,3 +1,10 @@
+# Editor
+.vscode
+
+# Docs
+docs/_build
+docs/_apidoc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
