@@ -11,6 +11,9 @@ twine = "*"
 flake8 = "*"
 black = "*"
 pre-commit = "*"
+pytest-cov = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 
 [packages]
 numpy = "*"
