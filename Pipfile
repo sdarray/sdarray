@@ -4,24 +4,24 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pytest = "*"
+twine = "*"
 ipython = "*"
 jupyterlab = "*"
-twine = "*"
 flake8 = "*"
 black = "*"
-pre-commit = "*"
+pytest = "*"
 pytest-cov = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+pre-commit = "*"
 
 [packages]
 numpy = "*"
-astropy = "*"
+pandas = "*"
 xarray = "*"
+astropy = "*"
 netcdf4 = "*"
 matplotlib = "*"
-pandas = "*"
 dask = {extras = ["complete"],version = "*"}
 
 [requires]
