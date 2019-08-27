@@ -1,0 +1,10 @@
+sdarray package
+===============
+
+Module contents
+---------------
+
+.. automodule:: sdarray
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sdarray
+=======
+
+.. toctree::
+   :maxdepth: 4
+
+   sdarray
