@@ -7,5 +7,17 @@ install:
   - pip install black flake8
   - pip install .
 script:
-  - black --check demo
-  - flake8 demo
+  - black --check sdarray
+  - flake8 sdarray
+  - pytest
+jobs:
+  include:
+    - stage: coverage
+      python: "3.7"
+      install:
+        - pip install pytest-cov codecov
+        - pip install .
+      script:
+        - pytest --cov sdarray
+      after_success:
+        - codecov
