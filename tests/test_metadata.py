@@ -8,4 +8,4 @@ def test_version():
 
 def test_author():
     """Make sure the author is valid."""
-    assert sd.__author__ == "astropenguin"
+    assert sd.__author__ == "Akio Taniguchi"
