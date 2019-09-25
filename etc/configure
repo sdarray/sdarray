@@ -1,0 +1,13 @@
+#!/bin/bash
+set -eu
+
+# check existence of pipenv
+if ! type pipenv >/dev/null 2>&1
+then
+    echo 'Error: pipenv is not installed'
+    exit 1
+fi
+
+# add environment variables to .env
+PROJ=$(pipenv --where 2>/dev/null)
+echo PYTHONSTARTUP=${PROJ}/startup.py >> .env
