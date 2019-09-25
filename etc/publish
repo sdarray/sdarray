@@ -12,9 +12,9 @@ then
 fi
 
 # update version written in files
-for d in sdarray docs tests
+for f in setup.cfg sdarray/*.py docs/*.py tests/*.py
 do
-    find ${d} -type f | xargs sed -i '' -E s/${VERSION_ERE}/${VERSION}/g
+    find ${f} -type f | xargs sed -i '' -E s/${VERSION_ERE}/${VERSION}/g
 done
 
 # publish source distribution
