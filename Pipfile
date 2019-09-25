@@ -29,3 +29,7 @@ python_version = "3.7"
 
 [pipenv]
 allow_prereleases = true
+
+[scripts]
+lab = "jupyter lab"
+publish = "etc/publish"
