@@ -19,8 +19,8 @@ sys.path.insert(0, os.path.abspath("../"))
 # -- Project information -----------------------------------------------------
 
 project = "sdarray"
-copyright = "2019, astropenguin"
-author = "astropenguin"
+copyright = "2019, Akio Taniguchi"
+author = "Akio Taniguchi"
 
 # The full version, including alpha/beta/rc tags
 release = "0.0.1"
