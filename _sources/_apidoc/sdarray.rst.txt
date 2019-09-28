@@ -1,6 +1,18 @@
 sdarray package
 ===============
 
+Submodules
+----------
+
+sdarray.accessor module
+-----------------------
+
+.. automodule:: sdarray.accessor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 Module contents
 ---------------
 
