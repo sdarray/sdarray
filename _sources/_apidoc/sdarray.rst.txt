@@ -12,6 +12,14 @@ sdarray.accessor module
    :undoc-members:
    :show-inheritance:
 
+sdarray.config module
+---------------------
+
+.. automodule:: sdarray.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 Module contents
 ---------------
