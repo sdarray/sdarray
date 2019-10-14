@@ -13,3 +13,7 @@ from . import arrayfunc
 from . import accessor
 from .arrayfact import *
 from .arrayfunc import *
+
+
+# for sphinx apidoc
+__all__ = dir()
