@@ -12,6 +12,22 @@ sdarray.accessor module
    :undoc-members:
    :show-inheritance:
 
+sdarray.arrayfact module
+------------------------
+
+.. automodule:: sdarray.arrayfact
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sdarray.arrayfunc module
+------------------------
+
+.. automodule:: sdarray.arrayfunc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 sdarray.config module
 ---------------------
 
