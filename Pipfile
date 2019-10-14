@@ -23,6 +23,7 @@ astropy = "*"
 netcdf4 = "*"
 matplotlib = "*"
 dask = {extras = ["complete"],version = "*"}
+toml = "*"
 
 [requires]
 python_version = "3.7"
