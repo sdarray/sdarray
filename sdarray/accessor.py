@@ -27,7 +27,7 @@ def add_methods(module):
     return decorator
 
 
-@xr.register_dataarray_accessor("sd")
+@xr.register_dataarray_accessor(sd.ACCESSOR)
 @add_methods(sd.arrayfunc)
 class SDArrayAccessor:
     """DataArray accessor for an SD dataarray."""
