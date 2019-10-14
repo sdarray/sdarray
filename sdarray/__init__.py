@@ -4,3 +4,5 @@ __author__ = "Akio Taniguchi"
 
 
 ACCESSOR = "sd"
+DIMS = ("t", "ch")
+
