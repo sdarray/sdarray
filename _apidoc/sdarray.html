@@ -82,11 +82,11 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">sdarray package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#sdarray-accessor-module">sdarray.accessor module</a></li>
-<li><a class="reference internal" href="#sdarray-arrayfact-module">sdarray.arrayfact module</a></li>
-<li><a class="reference internal" href="#sdarray-arrayfunc-module">sdarray.arrayfunc module</a></li>
-<li><a class="reference internal" href="#sdarray-config-module">sdarray.config module</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-sdarray.accessor">sdarray.accessor module</a></li>
+<li><a class="reference internal" href="#module-sdarray.arrayfact">sdarray.arrayfact module</a></li>
+<li><a class="reference internal" href="#module-sdarray.arrayfunc">sdarray.arrayfunc module</a></li>
+<li><a class="reference internal" href="#module-sdarray.config">sdarray.config module</a></li>
+<li><a class="reference internal" href="#module-sdarray">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -158,20 +158,111 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="sdarray-accessor-module">
-<h2>sdarray.accessor module<a class="headerlink" href="#sdarray-accessor-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-sdarray.accessor">
+<span id="sdarray-accessor-module"></span><h2>sdarray.accessor module<a class="headerlink" href="#module-sdarray.accessor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="sdarray.accessor.SDArrayAccessor">
+<em class="property">class </em><code class="sig-prename descclassname">sdarray.accessor.</code><code class="sig-name descname">SDArrayAccessor</code><span class="sig-paren">(</span><em class="sig-param">accessed</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/accessor.html#SDArrayAccessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.accessor.SDArrayAccessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>DataArray accessor for an SD dataarray.</p>
+<dl class="method">
+<dt id="sdarray.accessor.SDArrayAccessor.ones_like">
+<code class="sig-name descname">ones_like</code><span class="sig-paren">(</span><em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sdarray.accessor.SDArrayAccessor.ones_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with ones keeping shape of an input.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdarray.accessor.SDArrayAccessor.zeros_like">
+<code class="sig-name descname">zeros_like</code><span class="sig-paren">(</span><em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sdarray.accessor.SDArrayAccessor.zeros_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with zeros keeping shape of an input.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.accessor.add_methods">
+<code class="sig-prename descclassname">sdarray.accessor.</code><code class="sig-name descname">add_methods</code><span class="sig-paren">(</span><em class="sig-param">module</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/accessor.html#add_methods"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.accessor.add_methods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class decorator that adds functions in a module to an accessor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.accessor.to_method">
+<code class="sig-prename descclassname">sdarray.accessor.</code><code class="sig-name descname">to_method</code><span class="sig-paren">(</span><em class="sig-param">func</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/accessor.html#to_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.accessor.to_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator that converts a function to an accessor method.</p>
+</dd></dl>
+
 </div>
-<div class="section" id="sdarray-arrayfact-module">
-<h2>sdarray.arrayfact module<a class="headerlink" href="#sdarray-arrayfact-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-sdarray.arrayfact">
+<span id="sdarray-arrayfact-module"></span><h2>sdarray.arrayfact module<a class="headerlink" href="#module-sdarray.arrayfact" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="sdarray.arrayfact.array">
+<code class="sig-prename descclassname">sdarray.arrayfact.</code><code class="sig-name descname">array</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfact.html#array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.arrayfact.array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray from data.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.arrayfact.zeros">
+<code class="sig-prename descclassname">sdarray.arrayfact.</code><code class="sig-name descname">zeros</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfact.html#zeros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.arrayfact.zeros" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with zeros.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.arrayfact.ones">
+<code class="sig-prename descclassname">sdarray.arrayfact.</code><code class="sig-name descname">ones</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfact.html#ones"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.arrayfact.ones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with ones.</p>
+</dd></dl>
+
 </div>
-<div class="section" id="sdarray-arrayfunc-module">
-<h2>sdarray.arrayfunc module<a class="headerlink" href="#sdarray-arrayfunc-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-sdarray.arrayfunc">
+<span id="sdarray-arrayfunc-module"></span><h2>sdarray.arrayfunc module<a class="headerlink" href="#module-sdarray.arrayfunc" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="sdarray.arrayfunc.zeros_like">
+<code class="sig-prename descclassname">sdarray.arrayfunc.</code><code class="sig-name descname">zeros_like</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfunc.html#zeros_like"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.arrayfunc.zeros_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with zeros keeping shape of an input.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.arrayfunc.ones_like">
+<code class="sig-prename descclassname">sdarray.arrayfunc.</code><code class="sig-name descname">ones_like</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfunc.html#ones_like"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.arrayfunc.ones_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with ones keeping shape of an input.</p>
+</dd></dl>
+
 </div>
-<div class="section" id="sdarray-config-module">
-<h2>sdarray.config module<a class="headerlink" href="#sdarray-config-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-sdarray.config">
+<span id="sdarray-config-module"></span><h2>sdarray.config module<a class="headerlink" href="#module-sdarray.config" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-sdarray">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sdarray" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="sdarray.array">
+<code class="sig-prename descclassname">sdarray.</code><code class="sig-name descname">array</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfact.html#array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray from data.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.ones">
+<code class="sig-prename descclassname">sdarray.</code><code class="sig-name descname">ones</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfact.html#ones"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.ones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with ones.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.ones_like">
+<code class="sig-prename descclassname">sdarray.</code><code class="sig-name descname">ones_like</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfunc.html#ones_like"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.ones_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with ones keeping shape of an input.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.zeros">
+<code class="sig-prename descclassname">sdarray.</code><code class="sig-name descname">zeros</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfact.html#zeros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.zeros" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with zeros.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sdarray.zeros_like">
+<code class="sig-prename descclassname">sdarray.</code><code class="sig-name descname">zeros_like</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdarray/arrayfunc.html#zeros_like"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdarray.zeros_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a dataarray filled with zeros keeping shape of an input.</p>
+</dd></dl>
+
 </div>
 </div>
 
