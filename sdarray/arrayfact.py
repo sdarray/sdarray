@@ -46,7 +46,7 @@ class use_coords:
         wrapped.__doc__ += indent(kwargs_doc, SOFTTAB)
 
     @staticmethod
-    def get_coord(array, data=None, dims=None, dtype=int, default=0, **ignored):
+    def get_coord(array, data=None, dims=None, dtype="int", default=0, **ignored):
         """Get an xarray's coordinate compatible with a dataarray."""
         if dims is None:
             dims = ()
