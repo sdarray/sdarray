@@ -84,11 +84,15 @@ def array(data, **kwargs):
     return xr.DataArray(data, dims=sd.DIMS, **kwargs)
 
 
+@use_coords(sd.config.coords)
 def zeros(shape, dtype=None, **kwargs):
     """Make a dataarray filled with zeros."""
-    return array(np.zeros(shape, dtype), **kwargs)
+    data = np.zeros(shape, dtype)
+    return xr.DataArray(data, dims=sd.DIMS, **kwargs)
 
 
+@use_coords(sd.config.coords)
 def ones(shape, dtype=None, **kwargs):
     """Make a dataarray filled with ones."""
-    return array(np.ones(shape, dtype), **kwargs)
+    data = np.ones(shape, dtype)
+    return xr.DataArray(data, dims=sd.DIMS, **kwargs)
