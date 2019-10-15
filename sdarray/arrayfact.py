@@ -1,9 +1,13 @@
 __all__ = ["array", "zeros", "ones"]
 
 from functools import wraps
+from textwrap import indent, fill
 import numpy as np
 import xarray as xr
 import sdarray as sd
+
+
+SOFTTAB = " " * 4
 
 
 class use_coords:
@@ -20,6 +24,7 @@ class use_coords:
             self.add_coords(array, **coord_kwargs)
             return array
 
+        self.update_doc(wrapped)
         return wrapped
 
     def split_coord_kwargs(self, kwargs):
@@ -29,6 +34,16 @@ class use_coords:
         for name, info in self.config.items():
             coord = self.get_coord(array, coord_kwargs[name], **info)
             array.coords[name] = coord
+
+    def update_doc(self, wrapped):
+        wrapped.__doc__ = wrapped.__doc__.rstrip()
+        kwargs_doc = "\n\nKeyword Arguments:\n"
+
+        for name, info in self.config.items():
+            coord_doc = self.get_coord_doc(name, **info)
+            kwargs_doc += indent(coord_doc, SOFTTAB) + "\n"
+
+        wrapped.__doc__ += indent(kwargs_doc, SOFTTAB)
 
     @staticmethod
     def get_coord(array, data=None, dims=None, dtype=int, default=0, **ignored):
@@ -48,6 +63,19 @@ class use_coords:
 
         data = np.asarray(data).astype(dtype)
         return xr.DataArray(data, dims=dims)
+
+    @staticmethod
+    def get_coord_doc(name, doc=None, dims=None, dtype="int", default=0, **ignored):
+        """Get a docstring for a coordinate."""
+        coord_doc = f"{name} ({dtype}): default={repr(default)}. "
+
+        if dims is not None:
+            coord_doc += f"dims={repr(dims)}. "
+
+        if doc is not None:
+            coord_doc += doc
+
+        return fill(coord_doc, subsequent_indent=SOFTTAB)
 
 
 @use_coords(sd.config.coords)
