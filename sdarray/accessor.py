@@ -29,6 +29,7 @@ def add_methods(module):
 
 @xr.register_dataarray_accessor(sd.ACCESSOR)
 @add_methods(sd.arrayfunc)
+@add_methods(sd.selector)
 class SDArrayAccessor:
     """DataArray accessor for an SD dataarray."""
 

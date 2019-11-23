@@ -10,6 +10,7 @@ DIMS = ("t", "ch")
 from . import config
 from . import arrayfact
 from . import arrayfunc
+from . import selector
 from . import accessor
 from .arrayfact import *
 from .arrayfunc import *
