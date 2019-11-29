@@ -1,9 +1,9 @@
-__all__ = ["sel"]
+__all__ = ["where"]
 
 import numpy as np
 
 
-class SDArraySelector:
+class SDArrayFilter:
     def __init__(self, accessed, *coords):
         self.accessed = accessed
         self.coords = coords
@@ -80,6 +80,6 @@ class SDArraySelector:
         return self.contains(*self._to_seq(values))
 
 
-def sel(array, *coords):
-    """Make an `SDArraySelector` instance."""
-    return SDArraySelector(array, *coords)
+def where(array, *coords):
+    """Make an `SDArrayFilter` instance."""
+    return SDArrayFilter(array, *coords)
