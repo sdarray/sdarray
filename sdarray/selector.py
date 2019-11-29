@@ -42,7 +42,7 @@ class SDArraySelector:
         return self(lambda c, v: c <= v, *values, drop=drop)
 
     def between(self, *values, drop=True):
-        return self(lambda c, v: (c >= v[0]) & (c <= v[1]), *values, drop=drop)
+        return self(lambda c, v: (c >= v[0]) & (c <= v[-1]), *values, drop=drop)
 
     def contains(self, *values, drop=True):
         return self(lambda c, v: c.isin(self._to_unique(c, v)), *values, drop=drop)
