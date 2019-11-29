@@ -1,5 +1,7 @@
 __all__ = ["sel"]
 
+import numpy as np
+
 
 class SDArraySelector:
     def __init__(self, accessed, *coords):
@@ -17,6 +19,9 @@ class SDArraySelector:
 
     def _to_seq(self, values):
         return (values,) if len(self.coords) == 1 else values
+
+    def _to_unique(self, c, v, sep=","):
+        return [u for u in np.unique(c) if np.any(np.isin(v, u.split(sep)))]
 
     def eq(self, *values, drop=True):
         return self(lambda c, v: c.isin(v), *values, drop=drop)
@@ -38,6 +43,9 @@ class SDArraySelector:
 
     def between(self, *values, drop=True):
         return self(lambda c, v: (c >= v[0]) & (c <= v[1]), *values, drop=drop)
+
+    def contains(self, *values, drop=True):
+        return self(lambda c, v: c.isin(self._to_unique(c, v)), *values, drop=drop)
 
     def __eq__(self, values):
         """Helper operator for the `eq` method."""
@@ -66,6 +74,10 @@ class SDArraySelector:
     def __matmul__(self, values):
         """Helper operator for the `between` method."""
         return self.between(*self._to_seq(values))
+
+    def __pow__(self, values):
+        """Helper operator for the `contains` method."""
+        return self.contains(*self._to_seq(values))
 
 
 def sel(array, *coords):
