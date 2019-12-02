@@ -156,8 +156,8 @@
 <span class="k">class</span> <span class="nc">use_coords</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Decorator that adds coordinates to a dataarray.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
         <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -171,10 +171,10 @@
         <span class="k">return</span> <span class="n">wrapped</span>
 
     <span class="k">def</span> <span class="nf">split_coord_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="p">}</span>
 
     <span class="k">def</span> <span class="nf">add_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="o">**</span><span class="n">coord_kwargs</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">coord</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coord</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">coord_kwargs</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="o">**</span><span class="n">info</span><span class="p">)</span>
             <span class="n">array</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">coord</span>
 
@@ -182,7 +182,7 @@
         <span class="n">wrapped</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">wrapped</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
         <span class="n">kwargs_doc</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Keyword Arguments:</span><span class="se">\n</span><span class="s2">&quot;</span>
 
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">coord_doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coord_doc</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">info</span><span class="p">)</span>
             <span class="n">kwargs_doc</span> <span class="o">+=</span> <span class="n">indent</span><span class="p">(</span><span class="n">coord_doc</span><span class="p">,</span> <span class="n">SOFTTAB</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 
@@ -221,20 +221,20 @@
         <span class="k">return</span> <span class="n">fill</span><span class="p">(</span><span class="n">coord_doc</span><span class="p">,</span> <span class="n">subsequent_indent</span><span class="o">=</span><span class="n">SOFTTAB</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="array"><a class="viewcode-back" href="../../_apidoc/sdarray.html#sdarray.arrayfact.array">[docs]</a><span class="nd">@use_coords</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
+<div class="viewcode-block" id="array"><a class="viewcode-back" href="../../_apidoc/sdarray.html#sdarray.arrayfact.array">[docs]</a><span class="nd">@use_coords</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">specs</span><span class="o">.</span><span class="n">sdarray</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Make a dataarray from data.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="n">sd</span><span class="o">.</span><span class="n">DIMS</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="zeros"><a class="viewcode-back" href="../../_apidoc/sdarray.html#sdarray.arrayfact.zeros">[docs]</a><span class="nd">@use_coords</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
+<div class="viewcode-block" id="zeros"><a class="viewcode-back" href="../../_apidoc/sdarray.html#sdarray.arrayfact.zeros">[docs]</a><span class="nd">@use_coords</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">specs</span><span class="o">.</span><span class="n">sdarray</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Make a dataarray filled with zeros.&quot;&quot;&quot;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="n">sd</span><span class="o">.</span><span class="n">DIMS</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ones"><a class="viewcode-back" href="../../_apidoc/sdarray.html#sdarray.arrayfact.ones">[docs]</a><span class="nd">@use_coords</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
+<div class="viewcode-block" id="ones"><a class="viewcode-back" href="../../_apidoc/sdarray.html#sdarray.arrayfact.ones">[docs]</a><span class="nd">@use_coords</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">specs</span><span class="o">.</span><span class="n">sdarray</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ones</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Make a dataarray filled with ones.&quot;&quot;&quot;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>

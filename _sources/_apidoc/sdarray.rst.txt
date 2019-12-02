@@ -44,6 +44,14 @@ sdarray.selector module
    :undoc-members:
    :show-inheritance:
 
+sdarray.specs module
+--------------------
+
+.. automodule:: sdarray.specs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 Module contents
 ---------------
