@@ -141,8 +141,8 @@
            <div itemprop="articleBody">
             
   <h1>Source code for sdarray.accessor</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
-<span class="kn">from</span> <span class="nn">types</span> <span class="k">import</span> <span class="n">FunctionType</span>
+<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">FunctionType</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">sdarray</span> <span class="k">as</span> <span class="nn">sd</span>
 
@@ -172,10 +172,11 @@
 
 <div class="viewcode-block" id="SDArrayAccessor"><a class="viewcode-back" href="../../_apidoc/sdarray.html#sdarray.accessor.SDArrayAccessor">[docs]</a><span class="nd">@xr</span><span class="o">.</span><span class="n">register_dataarray_accessor</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">ACCESSOR</span><span class="p">)</span>
 <span class="nd">@add_methods</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">arrayfunc</span><span class="p">)</span>
+<span class="nd">@add_methods</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">selector</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">SDArrayAccessor</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;DataArray accessor for an SD dataarray.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">accessed</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">accessed</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize an accessor.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accessed</span> <span class="o">=</span> <span class="n">accessed</span></div>
 </pre></div>

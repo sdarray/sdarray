@@ -36,6 +36,14 @@ sdarray.config module
    :undoc-members:
    :show-inheritance:
 
+sdarray.selector module
+-----------------------
+
+.. automodule:: sdarray.selector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 Module contents
 ---------------
