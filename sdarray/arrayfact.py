@@ -78,20 +78,20 @@ class use_coords:
         return fill(coord_doc, subsequent_indent=SOFTTAB)
 
 
-@use_coords(sd.config.coords)
+@use_coords(sd.specs.sdarray)
 def array(data, **kwargs):
     """Make a dataarray from data."""
     return xr.DataArray(data, dims=sd.DIMS, **kwargs)
 
 
-@use_coords(sd.config.coords)
+@use_coords(sd.specs.sdarray)
 def zeros(shape, dtype=None, **kwargs):
     """Make a dataarray filled with zeros."""
     data = np.zeros(shape, dtype)
     return xr.DataArray(data, dims=sd.DIMS, **kwargs)
 
 
-@use_coords(sd.config.coords)
+@use_coords(sd.specs.sdarray)
 def ones(shape, dtype=None, **kwargs):
     """Make a dataarray filled with ones."""
     data = np.ones(shape, dtype)
