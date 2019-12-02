@@ -13,8 +13,8 @@ SOFTTAB = " " * 4
 class use_coords:
     """Decorator that adds coordinates to a dataarray."""
 
-    def __init__(self, config):
-        self.config = dict(config)
+    def __init__(self, spec):
+        self.spec = dict(spec)
 
     def __call__(self, func):
         @wraps(func)
@@ -28,10 +28,10 @@ class use_coords:
         return wrapped
 
     def split_coord_kwargs(self, kwargs):
-        return {name: kwargs.pop(name, None) for name in self.config}
+        return {name: kwargs.pop(name, None) for name in self.spec}
 
     def add_coords(self, array, **coord_kwargs):
-        for name, info in self.config.items():
+        for name, info in self.spec.items():
             coord = self.get_coord(array, coord_kwargs[name], **info)
             array.coords[name] = coord
 
@@ -39,7 +39,7 @@ class use_coords:
         wrapped.__doc__ = wrapped.__doc__.rstrip()
         kwargs_doc = "\n\nKeyword Arguments:\n"
 
-        for name, info in self.config.items():
+        for name, info in self.spec.items():
             coord_doc = self.get_coord_doc(name, **info)
             kwargs_doc += indent(coord_doc, SOFTTAB) + "\n"
 
@@ -78,20 +78,20 @@ class use_coords:
         return fill(coord_doc, subsequent_indent=SOFTTAB)
 
 
-@use_coords(sd.config.coords)
+@use_coords(sd.specs.sdarray)
 def array(data, **kwargs):
     """Make a dataarray from data."""
     return xr.DataArray(data, dims=sd.DIMS, **kwargs)
 
 
-@use_coords(sd.config.coords)
+@use_coords(sd.specs.sdarray)
 def zeros(shape, dtype=None, **kwargs):
     """Make a dataarray filled with zeros."""
     data = np.zeros(shape, dtype)
     return xr.DataArray(data, dims=sd.DIMS, **kwargs)
 
 
-@use_coords(sd.config.coords)
+@use_coords(sd.specs.sdarray)
 def ones(shape, dtype=None, **kwargs):
     """Make a dataarray filled with ones."""
     data = np.ones(shape, dtype)

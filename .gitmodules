@@ -1,0 +1,3 @@
+[submodule "sdarray/specs"]
+	path = sdarray/specs
+	url = https://github.com/sdarray/specs.git

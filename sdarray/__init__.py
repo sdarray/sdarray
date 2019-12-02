@@ -7,6 +7,7 @@ ACCESSOR = "sd"
 DIMS = ("t", "ch")
 
 
+from . import specs
 from . import config
 from . import arrayfact
 from . import arrayfunc
