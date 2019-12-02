@@ -3,7 +3,7 @@ __all__ = ["where"]
 import numpy as np
 
 
-class SDArrayFilter:
+class SDArraySelector:
     def __init__(self, accessed, *coords):
         self.accessed = accessed
         self.coords = coords
@@ -81,5 +81,5 @@ class SDArrayFilter:
 
 
 def where(array, *coords):
-    """Make an `SDArrayFilter` instance."""
-    return SDArrayFilter(array, *coords)
+    """Make an `SDArraySelector` instance."""
+    return SDArraySelector(array, *coords)
