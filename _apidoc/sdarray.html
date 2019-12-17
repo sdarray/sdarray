@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdarray package &mdash; sdarray 0.1.1 documentation</title>
+  <title>sdarray package &mdash; sdarray 0.1.2 documentation</title>
   
 
   
@@ -209,8 +209,95 @@
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension.</p></li>
-<li><p><strong>ch</strong> (<em>int</em>) – default=0. dims=’ch’. Channel dimension.</p></li>
+<li><p><strong>t_ids</strong> (<em>str</em>) – default=’t,sess,exec,scan’. Comma separated time ID
+names.</p></li>
+<li><p><strong>ch_ids</strong> (<em>str</em>) – default=’ch,pix,pol,spw,freq’. Comma separated channel
+ID names.</p></li>
+<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension
+(ID).</p></li>
+<li><p><strong>ch</strong> (<em>int64</em>) – default=0. dims=’ch’. Channel dimension (ID).</p></li>
+<li><p><strong>sess</strong> (<em>int64</em>) – default=’0’. dims=’t’. Session ID. It is an unit of an
+observation.</p></li>
+<li><p><strong>exec</strong> (<em>int64</em>) – default=’0’. dims=’t’. Execution ID. It is an unit of
+observed data.</p></li>
+<li><p><strong>scan</strong> (<em>int64</em>) – default=’0’. dims=’t’. Scan ID. It is the minimum unit
+of time-series data.</p></li>
+<li><p><strong>pix</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spatial pixel ID.</p></li>
+<li><p><strong>pol</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Polarization ID.</p></li>
+<li><p><strong>spw</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spectral window ID.</p></li>
+<li><p><strong>freq</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Frequency ID.</p></li>
+<li><p><strong>t_name</strong> (<em>str</em>) – default=’’. dims=’t’. Channel name.</p></li>
+<li><p><strong>t_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’t’. Weight along time
+dimension. Rows with greater weights are intended to count more.</p></li>
+<li><p><strong>t_mask</strong> (<em>bool</em>) – default=False. dims=’t’. Mask along time dimension.
+Rows with true mask are intended to be eliminated.</p></li>
+<li><p><strong>ch_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Channel name.</p></li>
+<li><p><strong>ch_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’ch’. Weight along channel
+dimension. Columns with greater weights are indended to count
+more.</p></li>
+<li><p><strong>ch_mask</strong> (<em>bool</em>) – default=False. dims=’ch’. Mask along channel
+dimension. Columns with true mask are intended to be eliminated.</p></li>
+<li><p><strong>sess_name</strong> (<em>str</em>) – default=’’. dims=’t’. Session name.</p></li>
+<li><p><strong>sess_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session
+start time.</p></li>
+<li><p><strong>sess_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session end
+time.</p></li>
+<li><p><strong>sess_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Session
+duration.</p></li>
+<li><p><strong>exec_name</strong> (<em>str</em>) – default=’’. dims=’t’. Execution name.</p></li>
+<li><p><strong>exec_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+start time.</p></li>
+<li><p><strong>exec_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+end time.</p></li>
+<li><p><strong>exec_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Execution
+duration.</p></li>
+<li><p><strong>scan_name</strong> (<em>str</em>) – default=’’. dims=’t’. Scan name.</p></li>
+<li><p><strong>scan_intents</strong> (<em>str</em>) – default=’’. dims=’t’. Scan intent names (comma
+separated).</p></li>
+<li><p><strong>scan_fields</strong> (<em>str</em>) – default=’’. dims=’t’. Scan field names (comma
+separated).</p></li>
+<li><p><strong>scan_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan
+start time.</p></li>
+<li><p><strong>scan_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan end
+time.</p></li>
+<li><p><strong>scan_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Scan duration.</p></li>
+<li><p><strong>pix_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Pixel name.</p></li>
+<li><p><strong>pol_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Polarization name.</p></li>
+<li><p><strong>spw_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Spectral window name.</p></li>
+<li><p><strong>spw_min_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Minimum frequency of
+SPW.</p></li>
+<li><p><strong>spw_max_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Maximum frequency of
+SPW.</p></li>
+<li><p><strong>freq_center</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency center of
+channel.</p></li>
+<li><p><strong>freq_width</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency width of
+channel.</p></li>
+<li><p><strong>freq_resolution</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency
+resolution of channel.</p></li>
+<li><p><strong>exposure</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Exposure time of
+each sample.</p></li>
+<li><p><strong>interval</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Interval time
+between samples.</p></li>
+<li><p><strong>az</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Azimuth that defines the origin
+of relative horizontal coordinates.</p></li>
+<li><p><strong>el</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Elevation that defines the
+origin of relative horizontal coordinates.</p></li>
+<li><p><strong>pix_x</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. X (horizontal) axis of
+pixel coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>pix_y</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Y (vertical) axis of pixel
+coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>rho</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Rotation angle between pixel
+and relative horizontal coordinates. When rho=0, dAz and dEl axes
+are identical to x and y axes, respectively.</p></li>
+<li><p><strong>v_rad</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Radial velocity.</p></li>
+<li><p><strong>project</strong> (<em>str</em>) – default=’’. Project ID.</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – default=’’. Name of observer.</p></li>
+<li><p><strong>telescope</strong> (<em>str</em>) – default=’’. Name of telescope.</p></li>
+<li><p><strong>frontend</strong> (<em>str</em>) – default=’’. Name of frontend instrument.</p></li>
+<li><p><strong>backend</strong> (<em>str</em>) – default=’’. Name of backend instrument.</p></li>
+<li><p><strong>object</strong> (<em>str</em>) – default=’’. Name of observed object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -223,8 +310,95 @@
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension.</p></li>
-<li><p><strong>ch</strong> (<em>int</em>) – default=0. dims=’ch’. Channel dimension.</p></li>
+<li><p><strong>t_ids</strong> (<em>str</em>) – default=’t,sess,exec,scan’. Comma separated time ID
+names.</p></li>
+<li><p><strong>ch_ids</strong> (<em>str</em>) – default=’ch,pix,pol,spw,freq’. Comma separated channel
+ID names.</p></li>
+<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension
+(ID).</p></li>
+<li><p><strong>ch</strong> (<em>int64</em>) – default=0. dims=’ch’. Channel dimension (ID).</p></li>
+<li><p><strong>sess</strong> (<em>int64</em>) – default=’0’. dims=’t’. Session ID. It is an unit of an
+observation.</p></li>
+<li><p><strong>exec</strong> (<em>int64</em>) – default=’0’. dims=’t’. Execution ID. It is an unit of
+observed data.</p></li>
+<li><p><strong>scan</strong> (<em>int64</em>) – default=’0’. dims=’t’. Scan ID. It is the minimum unit
+of time-series data.</p></li>
+<li><p><strong>pix</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spatial pixel ID.</p></li>
+<li><p><strong>pol</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Polarization ID.</p></li>
+<li><p><strong>spw</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spectral window ID.</p></li>
+<li><p><strong>freq</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Frequency ID.</p></li>
+<li><p><strong>t_name</strong> (<em>str</em>) – default=’’. dims=’t’. Channel name.</p></li>
+<li><p><strong>t_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’t’. Weight along time
+dimension. Rows with greater weights are intended to count more.</p></li>
+<li><p><strong>t_mask</strong> (<em>bool</em>) – default=False. dims=’t’. Mask along time dimension.
+Rows with true mask are intended to be eliminated.</p></li>
+<li><p><strong>ch_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Channel name.</p></li>
+<li><p><strong>ch_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’ch’. Weight along channel
+dimension. Columns with greater weights are indended to count
+more.</p></li>
+<li><p><strong>ch_mask</strong> (<em>bool</em>) – default=False. dims=’ch’. Mask along channel
+dimension. Columns with true mask are intended to be eliminated.</p></li>
+<li><p><strong>sess_name</strong> (<em>str</em>) – default=’’. dims=’t’. Session name.</p></li>
+<li><p><strong>sess_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session
+start time.</p></li>
+<li><p><strong>sess_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session end
+time.</p></li>
+<li><p><strong>sess_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Session
+duration.</p></li>
+<li><p><strong>exec_name</strong> (<em>str</em>) – default=’’. dims=’t’. Execution name.</p></li>
+<li><p><strong>exec_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+start time.</p></li>
+<li><p><strong>exec_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+end time.</p></li>
+<li><p><strong>exec_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Execution
+duration.</p></li>
+<li><p><strong>scan_name</strong> (<em>str</em>) – default=’’. dims=’t’. Scan name.</p></li>
+<li><p><strong>scan_intents</strong> (<em>str</em>) – default=’’. dims=’t’. Scan intent names (comma
+separated).</p></li>
+<li><p><strong>scan_fields</strong> (<em>str</em>) – default=’’. dims=’t’. Scan field names (comma
+separated).</p></li>
+<li><p><strong>scan_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan
+start time.</p></li>
+<li><p><strong>scan_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan end
+time.</p></li>
+<li><p><strong>scan_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Scan duration.</p></li>
+<li><p><strong>pix_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Pixel name.</p></li>
+<li><p><strong>pol_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Polarization name.</p></li>
+<li><p><strong>spw_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Spectral window name.</p></li>
+<li><p><strong>spw_min_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Minimum frequency of
+SPW.</p></li>
+<li><p><strong>spw_max_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Maximum frequency of
+SPW.</p></li>
+<li><p><strong>freq_center</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency center of
+channel.</p></li>
+<li><p><strong>freq_width</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency width of
+channel.</p></li>
+<li><p><strong>freq_resolution</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency
+resolution of channel.</p></li>
+<li><p><strong>exposure</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Exposure time of
+each sample.</p></li>
+<li><p><strong>interval</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Interval time
+between samples.</p></li>
+<li><p><strong>az</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Azimuth that defines the origin
+of relative horizontal coordinates.</p></li>
+<li><p><strong>el</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Elevation that defines the
+origin of relative horizontal coordinates.</p></li>
+<li><p><strong>pix_x</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. X (horizontal) axis of
+pixel coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>pix_y</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Y (vertical) axis of pixel
+coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>rho</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Rotation angle between pixel
+and relative horizontal coordinates. When rho=0, dAz and dEl axes
+are identical to x and y axes, respectively.</p></li>
+<li><p><strong>v_rad</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Radial velocity.</p></li>
+<li><p><strong>project</strong> (<em>str</em>) – default=’’. Project ID.</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – default=’’. Name of observer.</p></li>
+<li><p><strong>telescope</strong> (<em>str</em>) – default=’’. Name of telescope.</p></li>
+<li><p><strong>frontend</strong> (<em>str</em>) – default=’’. Name of frontend instrument.</p></li>
+<li><p><strong>backend</strong> (<em>str</em>) – default=’’. Name of backend instrument.</p></li>
+<li><p><strong>object</strong> (<em>str</em>) – default=’’. Name of observed object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -237,8 +411,95 @@
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension.</p></li>
-<li><p><strong>ch</strong> (<em>int</em>) – default=0. dims=’ch’. Channel dimension.</p></li>
+<li><p><strong>t_ids</strong> (<em>str</em>) – default=’t,sess,exec,scan’. Comma separated time ID
+names.</p></li>
+<li><p><strong>ch_ids</strong> (<em>str</em>) – default=’ch,pix,pol,spw,freq’. Comma separated channel
+ID names.</p></li>
+<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension
+(ID).</p></li>
+<li><p><strong>ch</strong> (<em>int64</em>) – default=0. dims=’ch’. Channel dimension (ID).</p></li>
+<li><p><strong>sess</strong> (<em>int64</em>) – default=’0’. dims=’t’. Session ID. It is an unit of an
+observation.</p></li>
+<li><p><strong>exec</strong> (<em>int64</em>) – default=’0’. dims=’t’. Execution ID. It is an unit of
+observed data.</p></li>
+<li><p><strong>scan</strong> (<em>int64</em>) – default=’0’. dims=’t’. Scan ID. It is the minimum unit
+of time-series data.</p></li>
+<li><p><strong>pix</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spatial pixel ID.</p></li>
+<li><p><strong>pol</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Polarization ID.</p></li>
+<li><p><strong>spw</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spectral window ID.</p></li>
+<li><p><strong>freq</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Frequency ID.</p></li>
+<li><p><strong>t_name</strong> (<em>str</em>) – default=’’. dims=’t’. Channel name.</p></li>
+<li><p><strong>t_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’t’. Weight along time
+dimension. Rows with greater weights are intended to count more.</p></li>
+<li><p><strong>t_mask</strong> (<em>bool</em>) – default=False. dims=’t’. Mask along time dimension.
+Rows with true mask are intended to be eliminated.</p></li>
+<li><p><strong>ch_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Channel name.</p></li>
+<li><p><strong>ch_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’ch’. Weight along channel
+dimension. Columns with greater weights are indended to count
+more.</p></li>
+<li><p><strong>ch_mask</strong> (<em>bool</em>) – default=False. dims=’ch’. Mask along channel
+dimension. Columns with true mask are intended to be eliminated.</p></li>
+<li><p><strong>sess_name</strong> (<em>str</em>) – default=’’. dims=’t’. Session name.</p></li>
+<li><p><strong>sess_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session
+start time.</p></li>
+<li><p><strong>sess_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session end
+time.</p></li>
+<li><p><strong>sess_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Session
+duration.</p></li>
+<li><p><strong>exec_name</strong> (<em>str</em>) – default=’’. dims=’t’. Execution name.</p></li>
+<li><p><strong>exec_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+start time.</p></li>
+<li><p><strong>exec_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+end time.</p></li>
+<li><p><strong>exec_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Execution
+duration.</p></li>
+<li><p><strong>scan_name</strong> (<em>str</em>) – default=’’. dims=’t’. Scan name.</p></li>
+<li><p><strong>scan_intents</strong> (<em>str</em>) – default=’’. dims=’t’. Scan intent names (comma
+separated).</p></li>
+<li><p><strong>scan_fields</strong> (<em>str</em>) – default=’’. dims=’t’. Scan field names (comma
+separated).</p></li>
+<li><p><strong>scan_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan
+start time.</p></li>
+<li><p><strong>scan_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan end
+time.</p></li>
+<li><p><strong>scan_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Scan duration.</p></li>
+<li><p><strong>pix_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Pixel name.</p></li>
+<li><p><strong>pol_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Polarization name.</p></li>
+<li><p><strong>spw_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Spectral window name.</p></li>
+<li><p><strong>spw_min_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Minimum frequency of
+SPW.</p></li>
+<li><p><strong>spw_max_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Maximum frequency of
+SPW.</p></li>
+<li><p><strong>freq_center</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency center of
+channel.</p></li>
+<li><p><strong>freq_width</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency width of
+channel.</p></li>
+<li><p><strong>freq_resolution</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency
+resolution of channel.</p></li>
+<li><p><strong>exposure</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Exposure time of
+each sample.</p></li>
+<li><p><strong>interval</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Interval time
+between samples.</p></li>
+<li><p><strong>az</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Azimuth that defines the origin
+of relative horizontal coordinates.</p></li>
+<li><p><strong>el</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Elevation that defines the
+origin of relative horizontal coordinates.</p></li>
+<li><p><strong>pix_x</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. X (horizontal) axis of
+pixel coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>pix_y</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Y (vertical) axis of pixel
+coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>rho</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Rotation angle between pixel
+and relative horizontal coordinates. When rho=0, dAz and dEl axes
+are identical to x and y axes, respectively.</p></li>
+<li><p><strong>v_rad</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Radial velocity.</p></li>
+<li><p><strong>project</strong> (<em>str</em>) – default=’’. Project ID.</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – default=’’. Name of observer.</p></li>
+<li><p><strong>telescope</strong> (<em>str</em>) – default=’’. Name of telescope.</p></li>
+<li><p><strong>frontend</strong> (<em>str</em>) – default=’’. Name of frontend instrument.</p></li>
+<li><p><strong>backend</strong> (<em>str</em>) – default=’’. Name of backend instrument.</p></li>
+<li><p><strong>object</strong> (<em>str</em>) – default=’’. Name of observed object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -284,8 +545,95 @@
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension.</p></li>
-<li><p><strong>ch</strong> (<em>int</em>) – default=0. dims=’ch’. Channel dimension.</p></li>
+<li><p><strong>t_ids</strong> (<em>str</em>) – default=’t,sess,exec,scan’. Comma separated time ID
+names.</p></li>
+<li><p><strong>ch_ids</strong> (<em>str</em>) – default=’ch,pix,pol,spw,freq’. Comma separated channel
+ID names.</p></li>
+<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension
+(ID).</p></li>
+<li><p><strong>ch</strong> (<em>int64</em>) – default=0. dims=’ch’. Channel dimension (ID).</p></li>
+<li><p><strong>sess</strong> (<em>int64</em>) – default=’0’. dims=’t’. Session ID. It is an unit of an
+observation.</p></li>
+<li><p><strong>exec</strong> (<em>int64</em>) – default=’0’. dims=’t’. Execution ID. It is an unit of
+observed data.</p></li>
+<li><p><strong>scan</strong> (<em>int64</em>) – default=’0’. dims=’t’. Scan ID. It is the minimum unit
+of time-series data.</p></li>
+<li><p><strong>pix</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spatial pixel ID.</p></li>
+<li><p><strong>pol</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Polarization ID.</p></li>
+<li><p><strong>spw</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spectral window ID.</p></li>
+<li><p><strong>freq</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Frequency ID.</p></li>
+<li><p><strong>t_name</strong> (<em>str</em>) – default=’’. dims=’t’. Channel name.</p></li>
+<li><p><strong>t_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’t’. Weight along time
+dimension. Rows with greater weights are intended to count more.</p></li>
+<li><p><strong>t_mask</strong> (<em>bool</em>) – default=False. dims=’t’. Mask along time dimension.
+Rows with true mask are intended to be eliminated.</p></li>
+<li><p><strong>ch_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Channel name.</p></li>
+<li><p><strong>ch_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’ch’. Weight along channel
+dimension. Columns with greater weights are indended to count
+more.</p></li>
+<li><p><strong>ch_mask</strong> (<em>bool</em>) – default=False. dims=’ch’. Mask along channel
+dimension. Columns with true mask are intended to be eliminated.</p></li>
+<li><p><strong>sess_name</strong> (<em>str</em>) – default=’’. dims=’t’. Session name.</p></li>
+<li><p><strong>sess_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session
+start time.</p></li>
+<li><p><strong>sess_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session end
+time.</p></li>
+<li><p><strong>sess_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Session
+duration.</p></li>
+<li><p><strong>exec_name</strong> (<em>str</em>) – default=’’. dims=’t’. Execution name.</p></li>
+<li><p><strong>exec_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+start time.</p></li>
+<li><p><strong>exec_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+end time.</p></li>
+<li><p><strong>exec_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Execution
+duration.</p></li>
+<li><p><strong>scan_name</strong> (<em>str</em>) – default=’’. dims=’t’. Scan name.</p></li>
+<li><p><strong>scan_intents</strong> (<em>str</em>) – default=’’. dims=’t’. Scan intent names (comma
+separated).</p></li>
+<li><p><strong>scan_fields</strong> (<em>str</em>) – default=’’. dims=’t’. Scan field names (comma
+separated).</p></li>
+<li><p><strong>scan_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan
+start time.</p></li>
+<li><p><strong>scan_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan end
+time.</p></li>
+<li><p><strong>scan_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Scan duration.</p></li>
+<li><p><strong>pix_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Pixel name.</p></li>
+<li><p><strong>pol_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Polarization name.</p></li>
+<li><p><strong>spw_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Spectral window name.</p></li>
+<li><p><strong>spw_min_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Minimum frequency of
+SPW.</p></li>
+<li><p><strong>spw_max_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Maximum frequency of
+SPW.</p></li>
+<li><p><strong>freq_center</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency center of
+channel.</p></li>
+<li><p><strong>freq_width</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency width of
+channel.</p></li>
+<li><p><strong>freq_resolution</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency
+resolution of channel.</p></li>
+<li><p><strong>exposure</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Exposure time of
+each sample.</p></li>
+<li><p><strong>interval</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Interval time
+between samples.</p></li>
+<li><p><strong>az</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Azimuth that defines the origin
+of relative horizontal coordinates.</p></li>
+<li><p><strong>el</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Elevation that defines the
+origin of relative horizontal coordinates.</p></li>
+<li><p><strong>pix_x</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. X (horizontal) axis of
+pixel coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>pix_y</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Y (vertical) axis of pixel
+coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>rho</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Rotation angle between pixel
+and relative horizontal coordinates. When rho=0, dAz and dEl axes
+are identical to x and y axes, respectively.</p></li>
+<li><p><strong>v_rad</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Radial velocity.</p></li>
+<li><p><strong>project</strong> (<em>str</em>) – default=’’. Project ID.</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – default=’’. Name of observer.</p></li>
+<li><p><strong>telescope</strong> (<em>str</em>) – default=’’. Name of telescope.</p></li>
+<li><p><strong>frontend</strong> (<em>str</em>) – default=’’. Name of frontend instrument.</p></li>
+<li><p><strong>backend</strong> (<em>str</em>) – default=’’. Name of backend instrument.</p></li>
+<li><p><strong>object</strong> (<em>str</em>) – default=’’. Name of observed object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -298,8 +646,95 @@
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension.</p></li>
-<li><p><strong>ch</strong> (<em>int</em>) – default=0. dims=’ch’. Channel dimension.</p></li>
+<li><p><strong>t_ids</strong> (<em>str</em>) – default=’t,sess,exec,scan’. Comma separated time ID
+names.</p></li>
+<li><p><strong>ch_ids</strong> (<em>str</em>) – default=’ch,pix,pol,spw,freq’. Comma separated channel
+ID names.</p></li>
+<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension
+(ID).</p></li>
+<li><p><strong>ch</strong> (<em>int64</em>) – default=0. dims=’ch’. Channel dimension (ID).</p></li>
+<li><p><strong>sess</strong> (<em>int64</em>) – default=’0’. dims=’t’. Session ID. It is an unit of an
+observation.</p></li>
+<li><p><strong>exec</strong> (<em>int64</em>) – default=’0’. dims=’t’. Execution ID. It is an unit of
+observed data.</p></li>
+<li><p><strong>scan</strong> (<em>int64</em>) – default=’0’. dims=’t’. Scan ID. It is the minimum unit
+of time-series data.</p></li>
+<li><p><strong>pix</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spatial pixel ID.</p></li>
+<li><p><strong>pol</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Polarization ID.</p></li>
+<li><p><strong>spw</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spectral window ID.</p></li>
+<li><p><strong>freq</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Frequency ID.</p></li>
+<li><p><strong>t_name</strong> (<em>str</em>) – default=’’. dims=’t’. Channel name.</p></li>
+<li><p><strong>t_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’t’. Weight along time
+dimension. Rows with greater weights are intended to count more.</p></li>
+<li><p><strong>t_mask</strong> (<em>bool</em>) – default=False. dims=’t’. Mask along time dimension.
+Rows with true mask are intended to be eliminated.</p></li>
+<li><p><strong>ch_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Channel name.</p></li>
+<li><p><strong>ch_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’ch’. Weight along channel
+dimension. Columns with greater weights are indended to count
+more.</p></li>
+<li><p><strong>ch_mask</strong> (<em>bool</em>) – default=False. dims=’ch’. Mask along channel
+dimension. Columns with true mask are intended to be eliminated.</p></li>
+<li><p><strong>sess_name</strong> (<em>str</em>) – default=’’. dims=’t’. Session name.</p></li>
+<li><p><strong>sess_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session
+start time.</p></li>
+<li><p><strong>sess_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session end
+time.</p></li>
+<li><p><strong>sess_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Session
+duration.</p></li>
+<li><p><strong>exec_name</strong> (<em>str</em>) – default=’’. dims=’t’. Execution name.</p></li>
+<li><p><strong>exec_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+start time.</p></li>
+<li><p><strong>exec_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+end time.</p></li>
+<li><p><strong>exec_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Execution
+duration.</p></li>
+<li><p><strong>scan_name</strong> (<em>str</em>) – default=’’. dims=’t’. Scan name.</p></li>
+<li><p><strong>scan_intents</strong> (<em>str</em>) – default=’’. dims=’t’. Scan intent names (comma
+separated).</p></li>
+<li><p><strong>scan_fields</strong> (<em>str</em>) – default=’’. dims=’t’. Scan field names (comma
+separated).</p></li>
+<li><p><strong>scan_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan
+start time.</p></li>
+<li><p><strong>scan_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan end
+time.</p></li>
+<li><p><strong>scan_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Scan duration.</p></li>
+<li><p><strong>pix_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Pixel name.</p></li>
+<li><p><strong>pol_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Polarization name.</p></li>
+<li><p><strong>spw_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Spectral window name.</p></li>
+<li><p><strong>spw_min_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Minimum frequency of
+SPW.</p></li>
+<li><p><strong>spw_max_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Maximum frequency of
+SPW.</p></li>
+<li><p><strong>freq_center</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency center of
+channel.</p></li>
+<li><p><strong>freq_width</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency width of
+channel.</p></li>
+<li><p><strong>freq_resolution</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency
+resolution of channel.</p></li>
+<li><p><strong>exposure</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Exposure time of
+each sample.</p></li>
+<li><p><strong>interval</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Interval time
+between samples.</p></li>
+<li><p><strong>az</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Azimuth that defines the origin
+of relative horizontal coordinates.</p></li>
+<li><p><strong>el</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Elevation that defines the
+origin of relative horizontal coordinates.</p></li>
+<li><p><strong>pix_x</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. X (horizontal) axis of
+pixel coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>pix_y</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Y (vertical) axis of pixel
+coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>rho</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Rotation angle between pixel
+and relative horizontal coordinates. When rho=0, dAz and dEl axes
+are identical to x and y axes, respectively.</p></li>
+<li><p><strong>v_rad</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Radial velocity.</p></li>
+<li><p><strong>project</strong> (<em>str</em>) – default=’’. Project ID.</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – default=’’. Name of observer.</p></li>
+<li><p><strong>telescope</strong> (<em>str</em>) – default=’’. Name of telescope.</p></li>
+<li><p><strong>frontend</strong> (<em>str</em>) – default=’’. Name of frontend instrument.</p></li>
+<li><p><strong>backend</strong> (<em>str</em>) – default=’’. Name of backend instrument.</p></li>
+<li><p><strong>object</strong> (<em>str</em>) – default=’’. Name of observed object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -318,8 +753,95 @@
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension.</p></li>
-<li><p><strong>ch</strong> (<em>int</em>) – default=0. dims=’ch’. Channel dimension.</p></li>
+<li><p><strong>t_ids</strong> (<em>str</em>) – default=’t,sess,exec,scan’. Comma separated time ID
+names.</p></li>
+<li><p><strong>ch_ids</strong> (<em>str</em>) – default=’ch,pix,pol,spw,freq’. Comma separated channel
+ID names.</p></li>
+<li><p><strong>t</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Time dimension
+(ID).</p></li>
+<li><p><strong>ch</strong> (<em>int64</em>) – default=0. dims=’ch’. Channel dimension (ID).</p></li>
+<li><p><strong>sess</strong> (<em>int64</em>) – default=’0’. dims=’t’. Session ID. It is an unit of an
+observation.</p></li>
+<li><p><strong>exec</strong> (<em>int64</em>) – default=’0’. dims=’t’. Execution ID. It is an unit of
+observed data.</p></li>
+<li><p><strong>scan</strong> (<em>int64</em>) – default=’0’. dims=’t’. Scan ID. It is the minimum unit
+of time-series data.</p></li>
+<li><p><strong>pix</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spatial pixel ID.</p></li>
+<li><p><strong>pol</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Polarization ID.</p></li>
+<li><p><strong>spw</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Spectral window ID.</p></li>
+<li><p><strong>freq</strong> (<em>int64</em>) – default=’0’. dims=’ch’. Frequency ID.</p></li>
+<li><p><strong>t_name</strong> (<em>str</em>) – default=’’. dims=’t’. Channel name.</p></li>
+<li><p><strong>t_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’t’. Weight along time
+dimension. Rows with greater weights are intended to count more.</p></li>
+<li><p><strong>t_mask</strong> (<em>bool</em>) – default=False. dims=’t’. Mask along time dimension.
+Rows with true mask are intended to be eliminated.</p></li>
+<li><p><strong>ch_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Channel name.</p></li>
+<li><p><strong>ch_weight</strong> (<em>float64</em>) – default=’1.0’. dims=’ch’. Weight along channel
+dimension. Columns with greater weights are indended to count
+more.</p></li>
+<li><p><strong>ch_mask</strong> (<em>bool</em>) – default=False. dims=’ch’. Mask along channel
+dimension. Columns with true mask are intended to be eliminated.</p></li>
+<li><p><strong>sess_name</strong> (<em>str</em>) – default=’’. dims=’t’. Session name.</p></li>
+<li><p><strong>sess_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session
+start time.</p></li>
+<li><p><strong>sess_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Session end
+time.</p></li>
+<li><p><strong>sess_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Session
+duration.</p></li>
+<li><p><strong>exec_name</strong> (<em>str</em>) – default=’’. dims=’t’. Execution name.</p></li>
+<li><p><strong>exec_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+start time.</p></li>
+<li><p><strong>exec_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Execution
+end time.</p></li>
+<li><p><strong>exec_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Execution
+duration.</p></li>
+<li><p><strong>scan_name</strong> (<em>str</em>) – default=’’. dims=’t’. Scan name.</p></li>
+<li><p><strong>scan_intents</strong> (<em>str</em>) – default=’’. dims=’t’. Scan intent names (comma
+separated).</p></li>
+<li><p><strong>scan_fields</strong> (<em>str</em>) – default=’’. dims=’t’. Scan field names (comma
+separated).</p></li>
+<li><p><strong>scan_start</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan
+start time.</p></li>
+<li><p><strong>scan_end</strong> (<em>datetime64</em><em>[</em><em>ns</em><em>]</em>) – default=’1970-01-01’. dims=’t’. Scan end
+time.</p></li>
+<li><p><strong>scan_duration</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Scan duration.</p></li>
+<li><p><strong>pix_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Pixel name.</p></li>
+<li><p><strong>pol_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Polarization name.</p></li>
+<li><p><strong>spw_name</strong> (<em>str</em>) – default=’’. dims=’ch’. Spectral window name.</p></li>
+<li><p><strong>spw_min_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Minimum frequency of
+SPW.</p></li>
+<li><p><strong>spw_max_freq</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Maximum frequency of
+SPW.</p></li>
+<li><p><strong>freq_center</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency center of
+channel.</p></li>
+<li><p><strong>freq_width</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency width of
+channel.</p></li>
+<li><p><strong>freq_resolution</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Frequency
+resolution of channel.</p></li>
+<li><p><strong>exposure</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Exposure time of
+each sample.</p></li>
+<li><p><strong>interval</strong> (<em>timedelta64</em><em>[</em><em>ns</em><em>]</em>) – default=’0’. dims=’t’. Interval time
+between samples.</p></li>
+<li><p><strong>az</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Azimuth that defines the origin
+of relative horizontal coordinates.</p></li>
+<li><p><strong>el</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Elevation that defines the
+origin of relative horizontal coordinates.</p></li>
+<li><p><strong>pix_x</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. X (horizontal) axis of
+pixel coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>pix_y</strong> (<em>float64</em>) – default=’0.0’. dims=’ch’. Y (vertical) axis of pixel
+coordinates. The origin is identical to that of relative
+horizontal coordinates.</p></li>
+<li><p><strong>rho</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Rotation angle between pixel
+and relative horizontal coordinates. When rho=0, dAz and dEl axes
+are identical to x and y axes, respectively.</p></li>
+<li><p><strong>v_rad</strong> (<em>float64</em>) – default=’0.0’. dims=’t’. Radial velocity.</p></li>
+<li><p><strong>project</strong> (<em>str</em>) – default=’’. Project ID.</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – default=’’. Name of observer.</p></li>
+<li><p><strong>telescope</strong> (<em>str</em>) – default=’’. Name of telescope.</p></li>
+<li><p><strong>frontend</strong> (<em>str</em>) – default=’’. Name of frontend instrument.</p></li>
+<li><p><strong>backend</strong> (<em>str</em>) – default=’’. Name of backend instrument.</p></li>
+<li><p><strong>object</strong> (<em>str</em>) – default=’’. Name of observed object.</p></li>
 </ul>
 </dd>
 </dl>
