@@ -9,7 +9,7 @@ install:
 script:
   - black --check sdarray
   - flake8 sdarray
-  - pytest
+  - pytest tests
 jobs:
   include:
     - stage: coverage
@@ -18,7 +18,7 @@ jobs:
         - pip install pytest-cov codecov
         - pip install .
       script:
-        - pytest --cov sdarray
+        - pytest tests --cov sdarray
       after_success:
         - codecov
     - stage: deploy
