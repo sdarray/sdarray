@@ -23,7 +23,7 @@ copyright = "2019, Akio Taniguchi"
 author = "Akio Taniguchi"
 
 # The full version, including alpha/beta/rc tags
-release = "0.1.2"
+release = "0.1.1"
 
 
 # -- General configuration ---------------------------------------------------
