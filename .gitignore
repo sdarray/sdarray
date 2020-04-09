@@ -1,7 +1,10 @@
-# Editor
-.vscode
+# User-defined
+.azely/
+.vscode/
+.envrc
+.env
 
-# Docs
+# Sphinx docs
 docs/_build
 docs/_apidoc
 
