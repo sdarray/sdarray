@@ -4,6 +4,10 @@ version = "0.1.2"
 description = "Python package for common single-dish data"
 authors = ["Akio Taniguchi <taniguchi@a.phys.nagoya-u.ac.jp>"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/sdarray/sdarray"
+documentation = "https://sdarray.github.io/sdarray"
+keywords = ["astronomy", "radio-astronomy", "single-dish"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
