@@ -1,13 +1,41 @@
 #!/bin/bash
 set -eu
 
-# check existence of pipenv
-if ! type pipenv >/dev/null 2>&1
+
+# check dependencies
+if ! type poetry >/dev/null 2>&1
 then
-    echo 'Error: pipenv is not installed'
+    echo "poetry is not installed"
     exit 1
 fi
 
-# add environment variables to .env
-PROJ=$(pipenv --where 2>/dev/null)
-echo PYTHONSTARTUP=${PROJ}/startup.py >> .env
+if ! type direnv >/dev/null 2>&1
+then
+    echo "direnv is not installed"
+    exit 1
+fi
+
+
+# set environment valiables
+echo "dotenv" > .envrc
+direnv allow .
+
+cat << EOS >> .env
+PYTHONSTARTUP=${PWD}/etc/startup.py
+EOS
+
+
+# set VS Code settings
+mkdir -p .vscode
+
+cat << EOS > .vscode/settings.json
+{
+    "python.pythonPath": "$(poetry run which python)",
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+}
+EOS
