@@ -1,0 +1,412 @@
+# specification of sdarray
+# version: 0.1
+
+## difinition of dimensions and indices
+
+[t_ids]
+dtype = "str"
+default = "t,sess,exec,scan"
+required = true
+doc = "Comma separated time ID names."
+
+[ch_ids]
+dtype = "str"
+default = "ch,pix,pol,spw,freq"
+required = true
+doc = "Comma separated channel ID names."
+
+## dimensions of sdarray
+
+[t]
+dims = "t"
+dtype = "datetime64[ns]"
+default = "1970-01-01"
+required = true
+doc = "Time dimension (ID)."
+
+[ch]
+dims = "ch"
+dtype = "int64"
+default = 0
+required = true
+doc = "Channel dimension (ID)."
+
+## indices of sdarray
+
+[sess]
+dims = "t"
+dtype = "int64"
+default = "0"
+required = true
+doc = """
+Session ID.
+It is an unit of an observation.
+"""
+
+[exec]
+dims = "t"
+dtype = "int64"
+default = "0"
+required = true
+doc = """
+Execution ID.
+It is an unit of observed data.
+"""
+
+[scan]
+dims = "t"
+dtype = "int64"
+default = "0"
+required = true
+doc = """
+Scan ID.
+It is the minimum unit of time-series data.
+"""
+
+[pix]
+dims = "ch"
+dtype = "int64"
+default = "0"
+required = true
+doc = "Spatial pixel ID."
+
+[pol]
+dims = "ch"
+dtype = "int64"
+default = "0"
+required = true
+doc = "Polarization ID."
+
+[spw]
+dims = "ch"
+dtype = "int64"
+default = "0"
+required = true
+doc = "Spectral window ID."
+
+[freq]
+dims = "ch"
+dtype = "int64"
+default = "0"
+required = true
+doc = "Frequency ID."
+
+## coordinates related to dimensions
+
+[t_name]
+dims = "t"
+dtype = "str"
+default = ""
+required = false
+doc = "Channel name."
+
+[t_weight]
+dims = "t"
+dtype = "float64"
+default = "1.0"
+required = false
+doc = """
+Weight along time dimension.
+Rows with greater weights are intended to count more.
+"""
+
+[t_mask]
+dims = "t"
+dtype = "bool"
+default = false
+required = false
+doc = """
+Mask along time dimension.
+Rows with true mask are intended to be eliminated.
+"""
+
+[ch_name]
+dims = "ch"
+dtype = "str"
+default = ""
+required = false
+doc = "Channel name."
+
+[ch_weight]
+dims = "ch"
+dtype = "float64"
+default = "1.0"
+required = false
+doc = """
+Weight along channel dimension.
+Columns with greater weights are indended to count more.
+"""
+
+[ch_mask]
+dims = "ch"
+dtype = "bool"
+default = false
+required = false
+doc = """Mask along channel dimension.
+Columns with true mask are intended to be eliminated.
+"""
+
+## coordinates related to time indices
+
+[sess_name]
+dims = "t"
+dtype = "str"
+default = ""
+required = false
+doc = "Session name."
+
+[sess_start]
+dims = "t"
+dtype = "datetime64[ns]"
+default = "1970-01-01"
+required = false
+doc = "Session start time."
+
+[sess_end]
+dims = "t"
+dtype = "datetime64[ns]"
+default = "1970-01-01"
+required = false
+doc = "Session end time."
+
+[sess_duration]
+dims = "t"
+dtype = "timedelta64[ns]"
+default = "0"
+required = false
+doc = "Session duration."
+
+[exec_name]
+dims = "t"
+dtype = "str"
+default = ""
+required = false
+doc = "Execution name."
+
+[exec_start]
+dims = "t"
+dtype = "datetime64[ns]"
+default = "1970-01-01"
+required = false
+doc = "Execution start time."
+
+[exec_end]
+dims = "t"
+dtype = "datetime64[ns]"
+default = "1970-01-01"
+required = false
+doc = "Execution end time."
+
+[exec_duration]
+dims = "t"
+dtype = "timedelta64[ns]"
+default = "0"
+required = false
+doc = "Execution duration."
+
+[scan_name]
+dims = "t"
+dtype = "str"
+default = ""
+required = false
+doc = "Scan name."
+
+[scan_intents]
+dims = "t"
+dtype = "str"
+default = ""
+required = false
+doc = "Scan intent names (comma separated)."
+
+[scan_fields]
+dims = "t"
+dtype = "str"
+default = ""
+required = false
+doc = "Scan field names (comma separated)."
+
+[scan_start]
+dims = "t"
+dtype = "datetime64[ns]"
+default = "1970-01-01"
+required = false
+doc = "Scan start time."
+
+[scan_end]
+dims = "t"
+dtype = "datetime64[ns]"
+default = "1970-01-01"
+required = false
+doc = "Scan end time."
+
+[scan_duration]
+dims = "t"
+dtype = "timedelta64[ns]"
+default = "0"
+required = false
+doc = "Scan duration."
+
+## coordinates related to channel indices
+
+[pix_name]
+dims = "ch"
+dtype = "str"
+default = ""
+required = false
+doc = "Pixel name."
+
+[pol_name]
+dims = "ch"
+dtype = "str"
+default = ""
+required = false
+doc = "Polarization name."
+
+[spw_name]
+dims = "ch"
+dtype = "str"
+default = ""
+required = false
+doc = "Spectral window name."
+
+[spw_min_freq]
+dims = "ch"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = "Minimum frequency of SPW."
+
+[spw_max_freq]
+dims = "ch"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = "Maximum frequency of SPW."
+
+[freq_center]
+dims = "ch"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = "Frequency center of channel."
+
+[freq_width]
+dims = "ch"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = "Frequency width of channel."
+
+[freq_resolution]
+dims = "ch"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = "Frequency resolution of channel."
+
+## coordinates that define data sampling along time
+
+[exposure]
+dims = "t"
+dtype = "timedelta64[ns]"
+default = "0"
+required = false
+doc = "Exposure time of each sample."
+
+[interval]
+dims = "t"
+dtype = "timedelta64[ns]"
+default = "0"
+required = false
+doc = "Interval time between samples."
+
+## coordinates that define (az, el) of each channel
+
+[az]
+dims = "t"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = "Azimuth that defines the origin of relative horizontal coordinates."
+
+[el]
+dims = "t"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = "Elevation that defines the origin of relative horizontal coordinates."
+
+[pix_x]
+dims = "ch"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = """
+X (horizontal) axis of pixel coordinates.
+The origin is identical to that of relative horizontal coordinates.
+"""
+
+[pix_y]
+dims = "ch"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = """
+Y (vertical) axis of pixel coordinates.
+The origin is identical to that of relative horizontal coordinates.
+"""
+
+[rho]
+dims = "t"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = """
+Rotation angle between pixel and relative horizontal coordinates.
+When rho=0, dAz and dEl axes are identical to x and y axes, respectively.
+"""
+
+[v_rad]
+dims = "t"
+dtype = "float64"
+default = "0.0"
+required = false
+doc = "Radial velocity."
+
+## coordinates of no dimension (i.e., header information)
+
+[project]
+dtype = "str"
+default = ""
+required = false
+doc = "Project ID."
+
+[observer]
+dtype = "str"
+default = ""
+required = false
+doc = "Name of observer."
+
+[telescope]
+dtype = "str"
+default = ""
+required = false
+doc = "Name of telescope."
+
+[frontend]
+dtype = "str"
+default = ""
+required = false
+doc = "Name of frontend instrument."
+
+[backend]
+dtype = "str"
+default = ""
+required = false
+doc = "Name of backend instrument."
+
+[object]
+dtype = "str"
+default = ""
+required = false
+doc = "Name of observed object."
