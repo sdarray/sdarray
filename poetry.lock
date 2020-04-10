@@ -244,6 +244,15 @@ diagnostics = ["bokeh (>=1.0.0)"]
 distributed = ["distributed (>=2.0)"]
 
 [[package]]
+category = "main"
+description = "A backport of the dataclasses module for Python 3.6"
+marker = "python_version >= \"3.6\" and python_version < \"3.7\""
+name = "dataclasses"
+optional = false
+python-versions = ">=3.6, <3.7"
+version = "0.7"
+
+[[package]]
 category = "dev"
 description = "Decorators for Humans"
 name = "decorator"
@@ -1445,7 +1454,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "6f0bf41c9c01d6b0502bd02c8331219aefc84d4b93601371178721e58089e045"
+content-hash = "9abcd6e98074e02245ae6dd9f31b384a6eee1aafefec7425a06fadf2608fdbe2"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -1550,6 +1559,10 @@ cycler = [
 dask = [
     {file = "dask-2.14.0-py3-none-any.whl", hash = "sha256:ddcfc2afa13a359aa707e5b3369127286543967a268061b50ee0cc891793602f"},
     {file = "dask-2.14.0.tar.gz", hash = "sha256:3885d0d071fb49707c7311f9762c1863800a6f13fa7a1dc12ec7006d8404320c"},
+]
+dataclasses = [
+    {file = "dataclasses-0.7-py3-none-any.whl", hash = "sha256:3459118f7ede7c8bea0fe795bff7c6c2ce287d01dd226202f7c9ebc0610a7836"},
+    {file = "dataclasses-0.7.tar.gz", hash = "sha256:494a6dcae3b8bcf80848eea2ef64c0cc5cd307ffc263e17cdf42f3e5420808e6"},
 ]
 decorator = [
     {file = "decorator-4.4.2-py2.py3-none-any.whl", hash = "sha256:41fa54c2a0cc4ba648be4fd43cff00aedf5b9465c9bf18d64325bc225f08f760"},
