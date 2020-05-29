@@ -1,8 +1,5 @@
-# User-defined
-.azely/
+# Editor settings
 .vscode/
-.envrc
-.env
 
 # Sphinx docs
 docs/_build
