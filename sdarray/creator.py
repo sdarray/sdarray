@@ -8,12 +8,12 @@ __all__ = ["ArrayDef", "CoordDef", "array_creator"]
 from dataclasses import dataclass
 from datetime import datetime
 from textwrap import dedent, indent, wrap
-from typing import Callable, Optional, Sequence, Union
+from typing import Callable, Hashable, Sequence, Union
 
 
 # dependent packages
 import numpy as np
-import xarray as xr
+from xarray import DataArray
 
 
 # constants
@@ -22,17 +22,20 @@ ELEMENT_TYPES = bool, str, int, float, datetime
 
 
 # type aliases
+Array = Union[np.ndarray, Union[ELEMENT_TYPES]]
+Dtype = Union[np.dtype, type, str]
+Dims = Union[Hashable, Sequence[Hashable]]
 Element = Union[ELEMENT_TYPES]
-Array = Union[np.ndarray, Element]
+Shape = Sequence[int]
 
 
 # data classes
 @dataclass(frozen=True)
 class ArrayDef:
-    """Definition of xarray's array."""
+    """Definition of array."""
 
     name: str  #: Name of array.
-    dims: Sequence[str]  #: Dimensions of array.
+    dims: Dims  #: Dimensions of array.
     short_desc: str  #: Short description.
     long_desc: str = ""  #: Long description (if any).
 
@@ -54,10 +57,10 @@ class ArrayDef:
 
 @dataclass(frozen=True)
 class CoordDef:
-    """Definition of xarray's coordinate."""
+    """Definition of coordinate."""
 
     name: str  #: Name of coordinate.
-    dims: Sequence[str]  #: Dimension(s) of coordinate.
+    dims: Dims  #: Dimension(s) of coordinate.
     type: str  #: Type of value(s).
     default: Element  #: Default value(s).
     short_desc: str  #: Short description.
@@ -104,41 +107,9 @@ def array_creator(cls: type) -> type:
 
     creator = get_creator(cls.array_def, cls.coord_defs)
 
-    def ones(
-        shape: Sequence[int], dtype: Optional[str] = None, **coords: Array,
-    ) -> xr.DataArray:
-        """Create xarray's DataArray filled with ones from given shape and coordinates.
-
-        Args:
-            shape: Shape of array.
-            dtype: Data type of array. Default: ``float64``.
-            coords: Coordinates. See creator function for more details.
-
-        Returns:
-            array: DataArray filled with ones with given coordinates.
-
-        """
-        return creator(np.ones(shape, dtype), **coords)
-
-    def zeros(
-        shape: Sequence[int], dtype: Optional[str] = None, **coords: Array
-    ) -> xr.DataArray:
-        """Create xarray's DataArray filled with zeros from given shape and coordinates.
-
-        Args:
-            shape: Shape of array.
-            dtype: Data type of array. Default: ``float64``.
-            coords: Coordinates. See creator function for more details.
-
-        Returns:
-            array: DataArray filled with zeros with given coordinates.
-
-        """
-        return creator(np.zeros(shape, dtype), **coords)
-
     cls.__call__ = staticmethod(creator)
-    cls.ones = staticmethod(ones)
-    cls.zeros = staticmethod(zeros)
+    cls.ones = staticmethod(get_ones(creator))
+    cls.zeros = staticmethod(get_zeros(creator))
 
     return cls
 
@@ -156,9 +127,9 @@ def get_creator(array_def: ArrayDef, coord_defs: Sequence[CoordDef]) -> Callable
 
     """
 
-    def creator(array: Array, **coords: Array) -> xr.DataArray:
+    def creator(array: Array, **coords: Array) -> DataArray:
         """\
-        Create xarray's DataArray from given array and coordinates.
+        Create DataArray from given array and coordinates.
 
         Args:
         {array}
@@ -168,7 +139,7 @@ def get_creator(array_def: ArrayDef, coord_defs: Sequence[CoordDef]) -> Callable
             array: DataArray with given coordinates.
 
         """
-        array = xr.DataArray(array, dims=array_def.dims)
+        array = DataArray(array, dims=array_def.dims)
 
         for cd in coord_defs:
             coord = coords.get(cd.name, None)
@@ -189,3 +160,83 @@ def get_creator(array_def: ArrayDef, coord_defs: Sequence[CoordDef]) -> Callable
     creator.__doc__ = dedent(creator.__doc__).format(array=doc_array, coords=doc_coords)
 
     return creator
+
+
+def get_ones(creator: Callable) -> Callable:
+    """Return ones function based on given creator function."""
+
+    def ones(shape: Shape, dtype: Dtype = float, **coords: Array) -> DataArray:
+        """Create DataArray filled with ones from given shape and coordinates.
+
+        Args:
+            shape: Shape of array.
+            dtype: Data type of array. Default: ``float64``.
+            coords: Coordinates. See creator function for more details.
+
+        Returns:
+            array: DataArray filled with ones with given coordinates.
+
+        """
+        return creator(np.ones(shape, dtype), **coords)
+
+    return ones
+
+
+def get_zeros(creator: Callable) -> Callable:
+    """Return zeros function based on given creator function."""
+
+    def zeros(shape: Shape, dtype: Dtype = float, **coords: Array) -> DataArray:
+        """Create DataArray filled with zeros from given shape and coordinates.
+
+        Args:
+            shape: Shape of array.
+            dtype: Data type of array. Default: ``float64``.
+            coords: Coordinates. See creator function for more details.
+
+        Returns:
+            array: DataArray filled with zeros with given coordinates.
+
+        """
+        return creator(np.zeros(shape, dtype), **coords)
+
+    return zeros
+
+
+def get_empty(creator: Callable) -> Callable:
+    """Return empty function based on given creator function."""
+
+    def empty(shape: Shape, dtype: Dtype = float, **coords: Array) -> DataArray:
+        """Create uninitialized DataArray from given shape and coordinates.
+
+        Args:
+            shape: Shape of array.
+            dtype: Data type of array. Default: ``float64``.
+            coords: Coordinates. See creator function for more details.
+
+        Returns:
+            array: Uninitialized DataArray with given coordinates.
+
+        """
+        return creator(np.empty(shape, dtype), **coords)
+
+    return empty
+
+
+def get_full(creator: Callable) -> Callable:
+    """Return full function based on given creator function."""
+
+    def full(shape: Shape, fill_value: Element, **coords: Array,) -> DataArray:
+        """Create uninitialized DataArray from given shape and coordinates.
+
+        Args:
+            shape: Shape of array.
+            dtype: Data type of array. Default: ``float64``.
+            coords: Coordinates. See creator function for more details.
+
+        Returns:
+            array: Uninitialized DataArray with given coordinates.
+
+        """
+        return creator(np.full(shape, fill_value), **coords)
+
+    return full
