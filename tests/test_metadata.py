@@ -1,11 +1,11 @@
-import sdarray as sd
+# submodules
+from sdarray import __author__, __version__
 
 
-def test_version():
-    """Make sure the version is valid."""
-    assert sd.__version__ == "0.1.2"
+# test functions
+def test_author() -> None:
+    assert __author__ == "Akio Taniguchi"
 
 
-def test_author():
-    """Make sure the author is valid."""
-    assert sd.__author__ == "Akio Taniguchi"
+def test_version() -> None:
+    assert __version__ == "0.1.2"
