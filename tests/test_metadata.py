@@ -8,4 +8,4 @@ def test_author() -> None:
 
 
 def test_version() -> None:
-    assert __version__ == "0.1.2"
+    assert __version__ == "0.1.3"
