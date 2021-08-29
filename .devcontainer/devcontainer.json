@@ -5,10 +5,17 @@
         "dockerfile": "Dockerfile",
     },
     "extensions": [
+        "mhutchie.git-graph",
         "ms-python.python",
+        "streetsidesoftware.code-spell-checker"
     ],
     "settings": {
+        "diffEditor.ignoreTrimWhitespace": false,
         "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
         "python.formatting.provider": "black",
         "python.languageServer": "Pylance",
         "python.linting.enabled": true,
