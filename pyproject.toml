@@ -10,14 +10,16 @@ documentation = "https://sdarray.github.io/sdarray"
 
 [tool.poetry.dependencies]
 python = ">=3.7, <3.10"
+typing-extensions = "^3.10"
+xarray-dataclasses = "^0.6"
 
 [tool.poetry.dev-dependencies]
-black = "^21.7b"
-flake8 = "^3.9"
-ipython = "^7.27"
-pydata-sphinx-theme = "^0.6"
+black = "^21.10b"
+flake8 = "^4.0"
+ipython = "^7.29"
+pydata-sphinx-theme = "^0.7"
 pytest = "^6.2"
-sphinx = "^4.1"
+sphinx = "^4.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
