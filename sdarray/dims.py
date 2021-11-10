@@ -6,29 +6,32 @@ from dataclasses import dataclass
 
 
 # dependencies
+import numpy as np
 from typing_extensions import Literal
 from xarray_dataclasses import Attr, Data
 
 
 # constants
 time = Literal["time"]
+"""Type hint for the time axis."""
 chan = Literal["chan"]
+"""Type hint for the channel axis."""
 
 
 # dataclasses
 @dataclass
 class Time:
-    """Time in UTC."""
+    """Start time in UTC."""
 
-    data: Data[time, Literal["M8[ns]"]]
-    long_name: Attr[str] = "Time in UTC"
+    data: Data[time, np.datetime64]
+    long_name: Attr[str] = "Start time in UTC"
     short_name: Attr[str] = "time"
 
 
 @dataclass
 class Chan:
-    """Channel ID."""
+    """Channel number."""
 
-    data: Data[chan, Literal["i8"]]
-    long_name: Attr[str] = "Channel ID"
+    data: Data[chan, np.int64]
+    long_name: Attr[str] = "Channel number"
     short_name: Attr[str] = "chan"
