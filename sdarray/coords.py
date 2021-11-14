@@ -5,6 +5,9 @@ __all__ = [
     "Interval",
     "RightAscension",
     "Declination",
+    "Beam",
+    "SpectralWindow",
+    "Polarization",
 ]
 
 
@@ -80,3 +83,30 @@ class Declination:
     short_name: Attr[str] = "dec"
     units: Attr[str] = "deg"
 
+
+# dataclasses (chan labels)
+@dataclass
+class Beam:
+    """Beam label."""
+
+    data: Data[chan, np.str_]
+    long_name: Attr[str] = "Beam label"
+    short_name: Attr[str] = "beam"
+
+
+@dataclass
+class SpectralWindow:
+    """Spectral window label."""
+
+    data: Data[chan, np.str_]
+    long_name: Attr[str] = "Spectral window label"
+    short_name: Attr[str] = "spw"
+
+
+@dataclass
+class Polarization:
+    """Polarization label."""
+
+    data: Data[chan, np.str_]
+    long_name: Attr[str] = "Polarization label"
+    short_name: Attr[str] = "pol"
