@@ -8,6 +8,10 @@ __all__ = [
     "Beam",
     "SpectralWindow",
     "Polarization",
+    "Frequency",
+    "RefFrequency",
+    "Resolution",
+    "Width",
 ]
 
 
@@ -110,3 +114,44 @@ class Polarization:
     data: Data[chan, np.str_]
     long_name: Attr[str] = "Polarization label"
     short_name: Attr[str] = "pol"
+
+
+# dataclasses (chan observables)
+@dataclass
+class Frequency:
+    """Center frequency."""
+
+    data: Data[chan, np.float64]
+    long_name: Attr[str] = "Center frequency"
+    short_name: Attr[str] = "freq"
+    units: Attr[str] = "Hz"
+
+
+@dataclass
+class RefFrequency:
+    """Reference frequency."""
+
+    data: Data[chan, np.float64]
+    long_name: Attr[str] = "Reference frequency"
+    short_name: Attr[str] = "ref_freq"
+    units: Attr[str] = "Hz"
+
+
+@dataclass
+class Resolution:
+    """Spectral resolution."""
+
+    data: Data[chan, np.float64]
+    long_name: Attr[str] = "Spectral resolution"
+    short_name: Attr[str] = "res"
+    units: Attr[str] = "Hz"
+
+
+@dataclass
+class Width:
+    """Channel width."""
+
+    data: Data[chan, np.float64]
+    long_name: Attr[str] = "Channel width"
+    short_name: Attr[str] = "width"
+    units: Attr[str] = "Hz"
