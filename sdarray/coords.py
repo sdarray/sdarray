@@ -3,8 +3,8 @@ __all__ = [
     "Mode",
     "Exposure",
     "Interval",
-    "RA",
-    "Dec",
+    "Longitude",
+    "Latitude",
     "Beam",
     "SpW",
     "Pol",
@@ -12,6 +12,8 @@ __all__ = [
     "RefFreq",
     "Resolution",
     "Width",
+    "LonOffset",
+    "LatOffset",
     "Mask",
     "Sigma",
     "Weight",
@@ -73,22 +75,22 @@ class Interval:
 
 
 @dataclass
-class RA:
-    """Right ascension."""
+class Longitude:
+    """Sky longitude."""
 
     data: Data[time, np.float64]
-    long_name: Attr[str] = "Right ascension"
-    short_name: Attr[str] = "ra"
+    long_name: Attr[str] = "Sky longitude" ""
+    short_name: Attr[str] = "longitude"
     units: Attr[str] = "deg"
 
 
 @dataclass
-class Dec:
-    """Declination."""
+class Latitude:
+    """Sky latitude."""
 
     data: Data[time, np.float64]
-    long_name: Attr[str] = "Declination"
-    short_name: Attr[str] = "dec"
+    long_name: Attr[str] = "Sky latitude"
+    short_name: Attr[str] = "latitude"
     units: Attr[str] = "deg"
 
 
@@ -159,6 +161,26 @@ class Width:
     long_name: Attr[str] = "Channel width"
     short_name: Attr[str] = "width"
     units: Attr[str] = "Hz"
+
+
+@dataclass
+class LonOffset:
+    """Offset from sky longitude."""
+
+    data: Data[chan, np.float64]
+    long_name: Attr[str] = "Offset from sky longitude"
+    short_name: Attr[str] = "lon_offset"
+    units: Attr[str] = "deg"
+
+
+@dataclass
+class LatOffset:
+    """Offset from sky latitude."""
+
+    data: Data[chan, np.float64]
+    long_name: Attr[str] = "Offset from sky latitude"
+    short_name: Attr[str] = "lat_offset"
+    units: Attr[str] = "deg"
 
 
 # dataclasses (time-chan observables)
