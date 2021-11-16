@@ -12,7 +12,7 @@ UNITS = "units"
 # test functions
 def test_scan() -> None:
     data = np.array(["0"], np.str_)
-    array = asdataarray(sd.coords.Scan(data))
+    array = asdataarray(sd.array.coords.Scan(data))
 
     assert array.data == data
     assert array.dims == ("time",)
@@ -22,7 +22,7 @@ def test_scan() -> None:
 
 def test_mode() -> None:
     data = np.array(["0"], np.str_)
-    array = asdataarray(sd.coords.Mode(data))
+    array = asdataarray(sd.array.coords.Mode(data))
 
     assert array.data == data
     assert array.dims == ("time",)
@@ -32,7 +32,7 @@ def test_mode() -> None:
 
 def test_exposure() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.Exposure(data))
+    array = asdataarray(sd.array.coords.Exposure(data))
 
     assert array.data == data
     assert array.dims == ("time",)
@@ -43,7 +43,7 @@ def test_exposure() -> None:
 
 def test_interval() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.Interval(data))
+    array = asdataarray(sd.array.coords.Interval(data))
 
     assert array.data == data
     assert array.dims == ("time",)
@@ -54,7 +54,7 @@ def test_interval() -> None:
 
 def test_longitude() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.Longitude(data))
+    array = asdataarray(sd.array.coords.Longitude(data))
 
     assert array.data == data
     assert array.dims == ("time",)
@@ -65,7 +65,7 @@ def test_longitude() -> None:
 
 def test_latitude() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.Latitude(data))
+    array = asdataarray(sd.array.coords.Latitude(data))
 
     assert array.data == data
     assert array.dims == ("time",)
@@ -76,7 +76,7 @@ def test_latitude() -> None:
 
 def test_beam() -> None:
     data = np.array(["0"], np.str_)
-    array = asdataarray(sd.coords.Beam(data))
+    array = asdataarray(sd.array.coords.Beam(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -86,7 +86,7 @@ def test_beam() -> None:
 
 def test_spw() -> None:
     data = np.array(["0"], np.str_)
-    array = asdataarray(sd.coords.SpW(data))
+    array = asdataarray(sd.array.coords.SpW(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -96,7 +96,7 @@ def test_spw() -> None:
 
 def test_pol() -> None:
     data = np.array(["0"], np.str_)
-    array = asdataarray(sd.coords.Pol(data))
+    array = asdataarray(sd.array.coords.Pol(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -106,7 +106,7 @@ def test_pol() -> None:
 
 def test_center_freq() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.CenterFreq(data))
+    array = asdataarray(sd.array.coords.CenterFreq(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -117,7 +117,7 @@ def test_center_freq() -> None:
 
 def test_ref_freq() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.RefFreq(data))
+    array = asdataarray(sd.array.coords.RefFreq(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -128,7 +128,7 @@ def test_ref_freq() -> None:
 
 def test_resolution() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.Resolution(data))
+    array = asdataarray(sd.array.coords.Resolution(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -139,7 +139,7 @@ def test_resolution() -> None:
 
 def test_width() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.Width(data))
+    array = asdataarray(sd.array.coords.Width(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -150,7 +150,7 @@ def test_width() -> None:
 
 def test_lon_offset() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.LonOffset(data))
+    array = asdataarray(sd.array.coords.LonOffset(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -161,7 +161,7 @@ def test_lon_offset() -> None:
 
 def test_lat_offset() -> None:
     data = np.array([0.0], np.float64)
-    array = asdataarray(sd.coords.LatOffset(data))
+    array = asdataarray(sd.array.coords.LatOffset(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
@@ -172,7 +172,7 @@ def test_lat_offset() -> None:
 
 def test_mask() -> None:
     data = np.array([[False]], np.bool_)
-    array = asdataarray(sd.coords.Mask(data))
+    array = asdataarray(sd.array.coords.Mask(data))
 
     assert array.data == data
     assert array.dims == ("time", "chan")
@@ -182,7 +182,7 @@ def test_mask() -> None:
 
 def test_sigma() -> None:
     data = np.array([[0.0]], np.float64)
-    array = asdataarray(sd.coords.Sigma(data))
+    array = asdataarray(sd.array.coords.Sigma(data))
 
     assert array.data == data
     assert array.dims == ("time", "chan")
@@ -192,7 +192,7 @@ def test_sigma() -> None:
 
 def test_weight() -> None:
     data = np.array([[1.0]], np.float64)
-    array = asdataarray(sd.coords.Weight(data))
+    array = asdataarray(sd.array.coords.Weight(data))
 
     assert array.data == data
     assert array.dims == ("time", "chan")

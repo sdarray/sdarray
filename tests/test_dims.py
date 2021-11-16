@@ -11,7 +11,7 @@ SHORT_NAME = "short_name"
 # test functions
 def test_time() -> None:
     data = np.array(["2000-01-01"], np.datetime64)
-    array = asdataarray(sd.dims.Time(data))
+    array = asdataarray(sd.array.dims.Time(data))
 
     assert array.data == data
     assert array.dims == ("time",)
@@ -21,7 +21,7 @@ def test_time() -> None:
 
 def test_chan() -> None:
     data = np.array([0], np.int64)
-    array = asdataarray(sd.dims.Chan(data))
+    array = asdataarray(sd.array.dims.Chan(data))
 
     assert array.data == data
     assert array.dims == ("chan",)
