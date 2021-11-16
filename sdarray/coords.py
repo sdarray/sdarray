@@ -12,11 +12,15 @@ __all__ = [
     "RefFreq",
     "Resolution",
     "Width",
+    "Mask",
+    "Sigma",
+    "Weight",
 ]
 
 
 # standard library
 from dataclasses import dataclass
+from typing import Tuple
 
 
 # dependencies
@@ -155,3 +159,31 @@ class Width:
     long_name: Attr[str] = "Channel width"
     short_name: Attr[str] = "width"
     units: Attr[str] = "Hz"
+
+
+# dataclasses (time-chan observables)
+@dataclass
+class Mask:
+    """Mask for an array."""
+
+    data: Data[Tuple[time, chan], np.bool_]
+    long_name: Attr[str] = "Mask for an array"
+    short_name: Attr[str] = "mask"
+
+
+@dataclass
+class Sigma:
+    """Uncertainty of an array."""
+
+    data: Data[Tuple[time, chan], np.float64]
+    long_name: Attr[str] = "Uncertainty of an array"
+    short_name: Attr[str] = "sigma"
+
+
+@dataclass
+class Weight:
+    """Weight for an array."""
+
+    data: Data[Tuple[time, chan], np.float64]
+    long_name: Attr[str] = "Weight for an array"
+    short_name: Attr[str] = "weight"
