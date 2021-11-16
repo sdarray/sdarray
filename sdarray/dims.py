@@ -14,6 +14,7 @@ from xarray_dataclasses import Attr, Data
 # constants
 time = Literal["time"]
 """Type hint for the time axis."""
+
 chan = Literal["chan"]
 """Type hint for the channel axis."""
 
