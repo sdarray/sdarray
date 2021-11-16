@@ -3,13 +3,13 @@ __all__ = [
     "Mode",
     "Exposure",
     "Interval",
-    "RightAscension",
-    "Declination",
+    "RA",
+    "Dec",
     "Beam",
-    "SpectralWindow",
-    "Polarization",
-    "Frequency",
-    "RefFrequency",
+    "SpW",
+    "Pol",
+    "CenterFreq",
+    "RefFreq",
     "Resolution",
     "Width",
 ]
@@ -52,7 +52,7 @@ class Mode:
 class Exposure:
     """Exposure time."""
 
-    data: Data[time, np.str_]
+    data: Data[time, np.float64]
     long_name: Attr[str] = "Exposure time"
     short_name: Attr[str] = "exposure"
     units: Attr[str] = "s"
@@ -62,14 +62,14 @@ class Exposure:
 class Interval:
     """Interval time."""
 
-    data: Data[time, np.str_]
+    data: Data[time, np.float64]
     long_name: Attr[str] = "Interval time"
     short_name: Attr[str] = "interval"
     units: Attr[str] = "s"
 
 
 @dataclass
-class RightAscension:
+class RA:
     """Right ascension."""
 
     data: Data[time, np.float64]
@@ -79,7 +79,7 @@ class RightAscension:
 
 
 @dataclass
-class Declination:
+class Dec:
     """Declination."""
 
     data: Data[time, np.float64]
@@ -99,7 +99,7 @@ class Beam:
 
 
 @dataclass
-class SpectralWindow:
+class SpW:
     """Spectral window label."""
 
     data: Data[chan, np.str_]
@@ -108,7 +108,7 @@ class SpectralWindow:
 
 
 @dataclass
-class Polarization:
+class Pol:
     """Polarization label."""
 
     data: Data[chan, np.str_]
@@ -118,17 +118,17 @@ class Polarization:
 
 # dataclasses (chan observables)
 @dataclass
-class Frequency:
+class CenterFreq:
     """Center frequency."""
 
     data: Data[chan, np.float64]
     long_name: Attr[str] = "Center frequency"
-    short_name: Attr[str] = "freq"
+    short_name: Attr[str] = "center_freq"
     units: Attr[str] = "Hz"
 
 
 @dataclass
-class RefFrequency:
+class RefFreq:
     """Reference frequency."""
 
     data: Data[chan, np.float64]
@@ -143,7 +143,7 @@ class Resolution:
 
     data: Data[chan, np.float64]
     long_name: Attr[str] = "Spectral resolution"
-    short_name: Attr[str] = "res"
+    short_name: Attr[str] = "resolution"
     units: Attr[str] = "Hz"
 
 
