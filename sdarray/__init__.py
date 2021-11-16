@@ -3,5 +3,4 @@ __author__ = "Akio Taniguchi"
 
 
 # submodules
-from . import coords
-from . import dims
+from . import array
