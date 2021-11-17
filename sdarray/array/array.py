@@ -8,6 +8,7 @@ from xarray_dataclasses import AsDataArray, Coordof, Data
 
 
 # submodules
+from . import coords
 from . import dims
 from .dims import time, chan
 from .mixins import KeywordOnly
@@ -26,3 +27,18 @@ class Array(AsDataArray, KeywordOnly):
 
     chan: Coordof[dims.Chan] = 0
     """Channel number."""
+
+    scan: Coordof[coords.Scan] = "0"
+    """Scan label."""
+
+    mode: Coordof[coords.Mode] = "0"
+    """Mode label."""
+
+    beam: Coordof[coords.Beam] = "0"
+    """Beam label."""
+
+    spw: Coordof[coords.SpW] = "0"
+    """Spectral window label."""
+
+    pol: Coordof[coords.Pol] = "0"
+    """Polarization label."""
