@@ -5,6 +5,7 @@ from typing import Any, Tuple
 
 # dependencies
 from xarray_dataclasses import AsDataArray, Coordof, Data
+from xarray_dataclasses.typing import Coord
 
 
 # submodules
@@ -42,3 +43,42 @@ class Array(AsDataArray, KeywordOnly):
 
     pol: Coordof[coords.Pol] = "0"
     """Polarization label."""
+
+    exposure: Coordof[coords.Exposure] = 0.0
+    """Exposure time."""
+
+    interval: Coordof[coords.Interval] = 0.0
+    """Interval time."""
+
+    longitude: Coordof[coords.Longitude] = 0.0
+    """Sky longitude."""
+
+    latitude: Coordof[coords.Latitude] = 0.0
+    """Sky latitude."""
+
+    lon_offset: Coordof[coords.LonOffset] = 0.0
+    """Offset from sky longitude."""
+
+    lat_offset: Coordof[coords.LatOffset] = 0.0
+    """Offset from sky latitude."""
+
+    center_freq: Coordof[coords.CenterFreq] = 0.0
+    """Center frequency."""
+
+    ref_freq: Coordof[coords.RefFreq] = 0.0
+    """Reference frequency."""
+
+    resolution: Coordof[coords.Resolution] = 0.0
+    """Spectral resolution."""
+
+    width: Coordof[coords.Width] = 0.0
+    """Channel width."""
+
+    mask: Coordof[coords.Mask] = False
+    """Mask for array data."""
+
+    sigma: Coordof[coords.Sigma] = 0.0
+    """Uncertainty of array data."""
+
+    weight: Coordof[coords.Weight] = 1.0
+    """Weight for array data."""

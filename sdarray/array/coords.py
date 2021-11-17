@@ -102,6 +102,26 @@ class Pol:
 
 # dataclasses (chan observables)
 @dataclass
+class LonOffset:
+    """Offset from sky longitude."""
+
+    data: Data[chan, np.float64]
+    long_name: Attr[str] = "Offset from sky longitude"
+    short_name: Attr[str] = "lon_offset"
+    units: Attr[str] = "deg"
+
+
+@dataclass
+class LatOffset:
+    """Offset from sky latitude."""
+
+    data: Data[chan, np.float64]
+    long_name: Attr[str] = "Offset from sky latitude"
+    short_name: Attr[str] = "lat_offset"
+    units: Attr[str] = "deg"
+
+
+@dataclass
 class CenterFreq:
     """Center frequency."""
 
@@ -141,49 +161,29 @@ class Width:
     units: Attr[str] = "Hz"
 
 
-@dataclass
-class LonOffset:
-    """Offset from sky longitude."""
-
-    data: Data[chan, np.float64]
-    long_name: Attr[str] = "Offset from sky longitude"
-    short_name: Attr[str] = "lon_offset"
-    units: Attr[str] = "deg"
-
-
-@dataclass
-class LatOffset:
-    """Offset from sky latitude."""
-
-    data: Data[chan, np.float64]
-    long_name: Attr[str] = "Offset from sky latitude"
-    short_name: Attr[str] = "lat_offset"
-    units: Attr[str] = "deg"
-
-
 # dataclasses (time-chan observables)
 @dataclass
 class Mask:
-    """Mask for an array."""
+    """Mask for array data."""
 
     data: Data[Tuple[time, chan], np.bool_]
-    long_name: Attr[str] = "Mask for an array"
+    long_name: Attr[str] = "Mask for array data"
     short_name: Attr[str] = "mask"
 
 
 @dataclass
 class Sigma:
-    """Uncertainty of an array."""
+    """Uncertainty of array data."""
 
     data: Data[Tuple[time, chan], np.float64]
-    long_name: Attr[str] = "Uncertainty of an array"
+    long_name: Attr[str] = "Uncertainty of array data"
     short_name: Attr[str] = "sigma"
 
 
 @dataclass
 class Weight:
-    """Weight for an array."""
+    """Weight for array data."""
 
     data: Data[Tuple[time, chan], np.float64]
-    long_name: Attr[str] = "Weight for an array"
+    long_name: Attr[str] = "Weight for array data"
     short_name: Attr[str] = "weight"
