@@ -6,7 +6,7 @@ from typing import Any, Type, TypeVar
 T = TypeVar("T")
 
 
-# mixin classes
+# utility classes
 class KeywordOnly:
     """Limit the second and subsequent ``__init__`` args to be keyword-only."""
 

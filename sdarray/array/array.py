@@ -12,7 +12,7 @@ from xarray_dataclasses.typing import Coord
 from . import coords
 from . import dims
 from .dims import time, chan
-from .mixins import KeywordOnly
+from .utils import KeywordOnly
 
 
 # dataclasses
