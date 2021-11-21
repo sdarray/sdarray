@@ -5,6 +5,7 @@ copyright = "2019-2021, Akio Taniguchi"
 
 # General configuration
 extensions = [
+    "myst_parser",
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
@@ -20,4 +21,5 @@ html_logo = "_static/logo.svg"
 html_theme = "pydata_sphinx_theme"
 html_theme_options = {
     "github_url": "https://github.com/sdarray/sdarray/",
+    "twitter_url": "https://twitter.com/astropengu_in/",
 }
