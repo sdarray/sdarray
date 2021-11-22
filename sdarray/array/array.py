@@ -5,13 +5,11 @@ from typing import Any, Tuple
 
 # dependencies
 from xarray_dataclasses import AsDataArray, Coordof, Data
-from xarray_dataclasses.typing import Coord
 
 
 # submodules
 from . import coords
 from . import dims
-from .dims import time, chan
 from .utils import KeywordOnly
 
 
@@ -20,7 +18,7 @@ from .utils import KeywordOnly
 class Array(AsDataArray, KeywordOnly):
     """Common single-dish data structure."""
 
-    data: Data[Tuple[time, chan], Any]
+    data: Data[Tuple[dims.time, dims.chan], Any]
     """Two-dimensional array data."""
 
     mask: Coordof[coords.Mask] = False
