@@ -21,28 +21,25 @@ class Array(AsDataArray, KeywordOnly):
     """Common single-dish data structure."""
 
     data: Data[Tuple[time, chan], Any]
-    """Time-vs-channel (two-dimensional) data."""
+    """Two-dimensional array data."""
+
+    mask: Coordof[coords.Mask] = False
+    """Mask of array data."""
+
+    sigma: Coordof[coords.Sigma] = 0.0
+    """Uncertainty of array data."""
+
+    weight: Coordof[coords.Weight] = 1.0
+    """Weight of array data."""
 
     time: Coordof[dims.Time] = "2000-01-01"
     """Start time in UTC."""
-
-    chan: Coordof[dims.Chan] = 0
-    """Channel number."""
 
     scan: Coordof[coords.Scan] = "0"
     """Scan label."""
 
     mode: Coordof[coords.Mode] = "0"
     """Mode label."""
-
-    beam: Coordof[coords.Beam] = "0"
-    """Beam label."""
-
-    spw: Coordof[coords.SpW] = "0"
-    """Spectral window label."""
-
-    pol: Coordof[coords.Pol] = "0"
-    """Polarization label."""
 
     exposure: Coordof[coords.Exposure] = 0.0
     """Exposure time."""
@@ -55,6 +52,18 @@ class Array(AsDataArray, KeywordOnly):
 
     latitude: Coordof[coords.Latitude] = 0.0
     """Sky latitude."""
+
+    chan: Coordof[dims.Chan] = 0
+    """Channel number."""
+
+    beam: Coordof[coords.Beam] = "0"
+    """Beam label."""
+
+    spw: Coordof[coords.SpW] = "0"
+    """Spectral window label."""
+
+    pol: Coordof[coords.Pol] = "0"
+    """Polarization label."""
 
     lon_offset: Coordof[coords.LonOffset] = 0.0
     """Offset from sky longitude."""
@@ -73,12 +82,3 @@ class Array(AsDataArray, KeywordOnly):
 
     width: Coordof[coords.Width] = 0.0
     """Channel width."""
-
-    mask: Coordof[coords.Mask] = False
-    """Mask for array data."""
-
-    sigma: Coordof[coords.Sigma] = 0.0
-    """Uncertainty of array data."""
-
-    weight: Coordof[coords.Weight] = 1.0
-    """Weight for array data."""

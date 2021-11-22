@@ -12,6 +12,34 @@ from xarray_dataclasses import Attr, Data
 from .dims import time, chan
 
 
+# dataclasses (time-chan data)
+@dataclass
+class Mask:
+    """Mask of array data."""
+
+    data: Data[Tuple[time, chan], np.bool_]
+    long_name: Attr[str] = "Mask for array data"
+    short_name: Attr[str] = "mask"
+
+
+@dataclass
+class Sigma:
+    """Uncertainty of array data."""
+
+    data: Data[Tuple[time, chan], np.float64]
+    long_name: Attr[str] = "Uncertainty of array data"
+    short_name: Attr[str] = "sigma"
+
+
+@dataclass
+class Weight:
+    """Weight of array data."""
+
+    data: Data[Tuple[time, chan], np.float64]
+    long_name: Attr[str] = "Weight for array data"
+    short_name: Attr[str] = "weight"
+
+
 # dataclasses (time labels)
 @dataclass
 class Scan:
@@ -31,7 +59,7 @@ class Mode:
     short_name: Attr[str] = "mode"
 
 
-# dataclasses (time observables)
+# dataclasses (time data)
 @dataclass
 class Exposure:
     """Exposure time."""
@@ -100,7 +128,7 @@ class Pol:
     short_name: Attr[str] = "pol"
 
 
-# dataclasses (chan observables)
+# dataclasses (chan data)
 @dataclass
 class LonOffset:
     """Offset from sky longitude."""
@@ -159,31 +187,3 @@ class Width:
     long_name: Attr[str] = "Channel width"
     short_name: Attr[str] = "width"
     units: Attr[str] = "Hz"
-
-
-# dataclasses (time-chan observables)
-@dataclass
-class Mask:
-    """Mask for array data."""
-
-    data: Data[Tuple[time, chan], np.bool_]
-    long_name: Attr[str] = "Mask for array data"
-    short_name: Attr[str] = "mask"
-
-
-@dataclass
-class Sigma:
-    """Uncertainty of array data."""
-
-    data: Data[Tuple[time, chan], np.float64]
-    long_name: Attr[str] = "Uncertainty of array data"
-    short_name: Attr[str] = "sigma"
-
-
-@dataclass
-class Weight:
-    """Weight for array data."""
-
-    data: Data[Tuple[time, chan], np.float64]
-    long_name: Attr[str] = "Weight for array data"
-    short_name: Attr[str] = "weight"
