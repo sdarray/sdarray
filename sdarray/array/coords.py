@@ -42,6 +42,15 @@ class Weight:
 
 # dataclasses (time labels)
 @dataclass
+class Obs:
+    """Observation label."""
+
+    data: Data[dims.time, np.str_]
+    long_name: Attr[str] = "Observation label"
+    short_name: Attr[str] = "obs"
+
+
+@dataclass
 class Scan:
     """Scan label."""
 

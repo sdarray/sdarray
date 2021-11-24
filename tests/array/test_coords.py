@@ -10,6 +10,16 @@ UNITS = "units"
 
 
 # test functions
+def test_obs() -> None:
+    data = np.array(["0"], np.str_)
+    array = asdataarray(sd.array.coords.Obs(data))
+
+    assert array.data == data
+    assert array.dims == ("time",)
+    assert array.dtype.type == data.dtype.type
+    assert array.attrs[SHORT_NAME] == "obs"
+
+
 def test_scan() -> None:
     data = np.array(["0"], np.str_)
     array = asdataarray(sd.array.coords.Scan(data))

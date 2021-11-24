@@ -33,6 +33,9 @@ class Array(AsDataArray, KeywordOnly):
     time: Coordof[dims.Time] = "2000-01-01"
     """Start time in UTC."""
 
+    obs: Coordof[coords.Obs] = "0"
+    """Observation label."""
+
     scan: Coordof[coords.Scan] = "0"
     """Scan label."""
 
