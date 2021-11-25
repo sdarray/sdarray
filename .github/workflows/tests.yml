@@ -23,10 +23,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Install project dependencies
-        run: |
-          sudo apt install pandoc
-          pip install poetry
-          poetry install
+        run: pip install poetry && poetry install
       - name: Test code's formatting (Black)
         run: black --check docs sdarray tests
       - name: Test code's execution (pytest)
