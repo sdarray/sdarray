@@ -8,12 +8,12 @@ from typing_extensions import Literal
 from xarray_dataclasses import Attr, Data
 
 
-# constants
+# type hints
 time = Literal["time"]
-"""Type hint for the time axis."""
+"""Type hint of the time dimension."""
 
 chan = Literal["chan"]
-"""Type hint for the channel axis."""
+"""Type hint of the channel dimension."""
 
 
 # dataclasses
@@ -28,8 +28,8 @@ class Time:
 
 @dataclass
 class Chan:
-    """Channel number."""
+    """Generic channel."""
 
     data: Data[chan, np.int64]
-    long_name: Attr[str] = "Channel number"
+    long_name: Attr[str] = "Generic channel"
     short_name: Attr[str] = "chan"
