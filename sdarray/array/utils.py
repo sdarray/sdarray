@@ -2,6 +2,10 @@
 from typing import Any, Type, TypeVar
 
 
+# dependencies
+from astropy.units import Quantity
+
+
 # type hints
 T = TypeVar("T")
 
@@ -15,3 +19,14 @@ class KeywordOnly:
             raise TypeError("The second and subsequent args are keyword-only.")
 
         return super().__new__(cls)
+
+
+class UnitConversion:
+    """Convert data to the defined units if they are given with units."""
+
+    def __post_init__(self) -> None:
+        if not (hasattr(self, "data") and hasattr(self, "units")):
+            return
+
+        if isinstance(self.data, Quantity):
+            self.data = self.data.to(self.units).value  # type: ignore
