@@ -1,6 +1,6 @@
 # Project information
 author = "Akio Taniguchi"
-copyright = "2019-2021, Akio Taniguchi"
+copyright = "2019-2022, Akio Taniguchi"
 
 
 # General configuration
