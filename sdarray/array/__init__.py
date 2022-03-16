@@ -1,9 +1,8 @@
-# type: ignore
-__version__ = "0.1.3"
-
-
 # submodules
 from . import array
+from . import coords
+from . import dims
+from . import utils
 
 
 # aliases

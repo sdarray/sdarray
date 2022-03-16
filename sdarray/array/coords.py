@@ -1,25 +1,3 @@
-__all__ = [
-    "Scan",
-    "Mode",
-    "Exposure",
-    "Interval",
-    "Longitude",
-    "Latitude",
-    "Beam",
-    "SpW",
-    "Pol",
-    "CenterFreq",
-    "RefFreq",
-    "Resolution",
-    "Width",
-    "LonOffset",
-    "LatOffset",
-    "Mask",
-    "Sigma",
-    "Weight",
-]
-
-
 # standard library
 from dataclasses import dataclass
 from typing import Tuple
@@ -31,15 +9,52 @@ from xarray_dataclasses import Attr, Data
 
 
 # submodules
-from .dims import time, chan
+from . import dims
+
+
+# dataclasses (time-chan data)
+@dataclass
+class Mask:
+    """Mask of array data."""
+
+    data: Data[Tuple[dims.time, dims.chan], np.bool_]
+    long_name: Attr[str] = "Mask for array data"
+    short_name: Attr[str] = "mask"
+
+
+@dataclass
+class Sigma:
+    """Uncertainty of array data."""
+
+    data: Data[Tuple[dims.time, dims.chan], np.float64]
+    long_name: Attr[str] = "Uncertainty of array data"
+    short_name: Attr[str] = "sigma"
+
+
+@dataclass
+class Weight:
+    """Weight of array data."""
+
+    data: Data[Tuple[dims.time, dims.chan], np.float64]
+    long_name: Attr[str] = "Weight for array data"
+    short_name: Attr[str] = "weight"
 
 
 # dataclasses (time labels)
 @dataclass
+class Obs:
+    """Observation label."""
+
+    data: Data[dims.time, np.str_]
+    long_name: Attr[str] = "Observation label"
+    short_name: Attr[str] = "obs"
+
+
+@dataclass
 class Scan:
     """Scan label."""
 
-    data: Data[time, np.str_]
+    data: Data[dims.time, np.str_]
     long_name: Attr[str] = "Scan label"
     short_name: Attr[str] = "scan"
 
@@ -48,17 +63,17 @@ class Scan:
 class Mode:
     """Mode label."""
 
-    data: Data[time, np.str_]
+    data: Data[dims.time, np.str_]
     long_name: Attr[str] = "Mode label"
     short_name: Attr[str] = "mode"
 
 
-# dataclasses (time observables)
+# dataclasses (time data)
 @dataclass
 class Exposure:
     """Exposure time."""
 
-    data: Data[time, np.float64]
+    data: Data[dims.time, np.float64]
     long_name: Attr[str] = "Exposure time"
     short_name: Attr[str] = "exposure"
     units: Attr[str] = "s"
@@ -68,7 +83,7 @@ class Exposure:
 class Interval:
     """Interval time."""
 
-    data: Data[time, np.float64]
+    data: Data[dims.time, np.float64]
     long_name: Attr[str] = "Interval time"
     short_name: Attr[str] = "interval"
     units: Attr[str] = "s"
@@ -78,7 +93,7 @@ class Interval:
 class Longitude:
     """Sky longitude."""
 
-    data: Data[time, np.float64]
+    data: Data[dims.time, np.float64]
     long_name: Attr[str] = "Sky longitude" ""
     short_name: Attr[str] = "longitude"
     units: Attr[str] = "deg"
@@ -88,7 +103,7 @@ class Longitude:
 class Latitude:
     """Sky latitude."""
 
-    data: Data[time, np.float64]
+    data: Data[dims.time, np.float64]
     long_name: Attr[str] = "Sky latitude"
     short_name: Attr[str] = "latitude"
     units: Attr[str] = "deg"
@@ -99,7 +114,7 @@ class Latitude:
 class Beam:
     """Beam label."""
 
-    data: Data[chan, np.str_]
+    data: Data[dims.chan, np.str_]
     long_name: Attr[str] = "Beam label"
     short_name: Attr[str] = "beam"
 
@@ -108,7 +123,7 @@ class Beam:
 class SpW:
     """Spectral window label."""
 
-    data: Data[chan, np.str_]
+    data: Data[dims.chan, np.str_]
     long_name: Attr[str] = "Spectral window label"
     short_name: Attr[str] = "spw"
 
@@ -117,57 +132,17 @@ class SpW:
 class Pol:
     """Polarization label."""
 
-    data: Data[chan, np.str_]
+    data: Data[dims.chan, np.str_]
     long_name: Attr[str] = "Polarization label"
     short_name: Attr[str] = "pol"
 
 
-# dataclasses (chan observables)
-@dataclass
-class CenterFreq:
-    """Center frequency."""
-
-    data: Data[chan, np.float64]
-    long_name: Attr[str] = "Center frequency"
-    short_name: Attr[str] = "center_freq"
-    units: Attr[str] = "Hz"
-
-
-@dataclass
-class RefFreq:
-    """Reference frequency."""
-
-    data: Data[chan, np.float64]
-    long_name: Attr[str] = "Reference frequency"
-    short_name: Attr[str] = "ref_freq"
-    units: Attr[str] = "Hz"
-
-
-@dataclass
-class Resolution:
-    """Spectral resolution."""
-
-    data: Data[chan, np.float64]
-    long_name: Attr[str] = "Spectral resolution"
-    short_name: Attr[str] = "resolution"
-    units: Attr[str] = "Hz"
-
-
-@dataclass
-class Width:
-    """Channel width."""
-
-    data: Data[chan, np.float64]
-    long_name: Attr[str] = "Channel width"
-    short_name: Attr[str] = "width"
-    units: Attr[str] = "Hz"
-
-
+# dataclasses (chan data)
 @dataclass
 class LonOffset:
     """Offset from sky longitude."""
 
-    data: Data[chan, np.float64]
+    data: Data[dims.chan, np.float64]
     long_name: Attr[str] = "Offset from sky longitude"
     short_name: Attr[str] = "lon_offset"
     units: Attr[str] = "deg"
@@ -177,35 +152,47 @@ class LonOffset:
 class LatOffset:
     """Offset from sky latitude."""
 
-    data: Data[chan, np.float64]
+    data: Data[dims.chan, np.float64]
     long_name: Attr[str] = "Offset from sky latitude"
     short_name: Attr[str] = "lat_offset"
     units: Attr[str] = "deg"
 
 
-# dataclasses (time-chan observables)
 @dataclass
-class Mask:
-    """Mask for an array."""
+class CenterFreq:
+    """Center frequency."""
 
-    data: Data[Tuple[time, chan], np.bool_]
-    long_name: Attr[str] = "Mask for an array"
-    short_name: Attr[str] = "mask"
-
-
-@dataclass
-class Sigma:
-    """Uncertainty of an array."""
-
-    data: Data[Tuple[time, chan], np.float64]
-    long_name: Attr[str] = "Uncertainty of an array"
-    short_name: Attr[str] = "sigma"
+    data: Data[dims.chan, np.float64]
+    long_name: Attr[str] = "Center frequency"
+    short_name: Attr[str] = "center_freq"
+    units: Attr[str] = "Hz"
 
 
 @dataclass
-class Weight:
-    """Weight for an array."""
+class RefFreq:
+    """Reference frequency."""
 
-    data: Data[Tuple[time, chan], np.float64]
-    long_name: Attr[str] = "Weight for an array"
-    short_name: Attr[str] = "weight"
+    data: Data[dims.chan, np.float64]
+    long_name: Attr[str] = "Reference frequency"
+    short_name: Attr[str] = "ref_freq"
+    units: Attr[str] = "Hz"
+
+
+@dataclass
+class Resolution:
+    """Spectral resolution."""
+
+    data: Data[dims.chan, np.float64]
+    long_name: Attr[str] = "Spectral resolution"
+    short_name: Attr[str] = "resolution"
+    units: Attr[str] = "Hz"
+
+
+@dataclass
+class Width:
+    """Channel width."""
+
+    data: Data[dims.chan, np.float64]
+    long_name: Attr[str] = "Channel width"
+    short_name: Attr[str] = "width"
+    units: Attr[str] = "Hz"
